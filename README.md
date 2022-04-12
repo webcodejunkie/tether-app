@@ -40,22 +40,34 @@ bio as well as basic information.
 ## Features and Requirements
 
 ### User Stories
+
 • As a consumer, I want to make a profile that will display a username, age, 
 gender.
+
 • As a user, I want to view different titles (games) that display information about 
 them.
+
 • As a user, I want to a collection of communities that are available to join 
 dependent on what game I'm searching for.
+
 • As a user I want to connect with a random user with the feature 'play now'.
+
 • As a user, I want to add another user and have it reflect on my friends list.
+
 • As a user of a community I want to create/delete/edit a posting of mine.
+
 • As a user admin I want to delete another user's post.
 ### Key Features
+
 • The app will be written with React. 
+
 • The app will use React hooks, and React Redux to maintain state and stray 
 from React components.
+
 • The app will have a chat menu with a send button to send messages and 
 images.
+
 • The app will store information locally for offline use.
+
 • The app will have a menu that encompasses all different parts of the 
 application including communities, profile, friends, games.
