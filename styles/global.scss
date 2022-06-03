@@ -1,0 +1,50 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+  line-height: 1.6;
+  font-size: 18px;
+  font-family: 'Poppings', sans-serif;
+}
+
+ul {
+  list-style: none;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+a {
+  text-decoration: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 800;
+}
+
+input:invalid {
+  border: 1px solid red;
+  color: red;
+}
+
+input:valid {
+  border: 1px solid transparent;
+  color: #000;
+}
+
+input {
+  padding: 10px 20px;
+  outline: 0;
+  border-radius: 20px;
+  border: 1px solid gray;
+  margin: 8px;
+  cursor: pointer;
+}

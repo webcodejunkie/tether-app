@@ -1,0 +1,54 @@
+.topMenuLinks {
+  color: #fff;
+  font-weight: 600;
+  text-align: center;
+  cursor: pointer;
+
+  &:hover {
+    color: #a5a5a5
+  }
+}
+
+.topMenuWrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: #7828b5;
+  align-items: center;
+}
+
+.topMenuLinkWrapper {
+  display: flex;
+  justify-content: space-evenly;
+  width: 100%;
+  background-color: #6c24a3;
+  padding: 5px;
+  z-index: 2;
+}
+
+.topMenuLinkWrapperAppear {
+  transform: translateY(10px);
+}
+
+.topMenuLinkWrapperFade {
+  transform: translateY(-10px);
+}
+
+.headerTitle {
+  color: #fff;
+  text-align: center;
+}
+
+.submitButton {
+  transition-duration: .5s;
+
+  &:hover {
+    transition-duration: .5s;
+    background-color: #00ed00;
+    opacity: .8;
+  }
+}
+
+.inputWrapper {
+  padding: 10px;
+}

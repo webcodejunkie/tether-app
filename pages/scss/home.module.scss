@@ -1,0 +1,48 @@
+@mixin button {
+  padding: 14px 30px;
+  outline: none;
+  border: 0px solid transparent;
+  cursor: pointer;
+  color: #FFF;
+  transition-duration: .8s;
+  background-image: linear-gradient(359deg, #be33f5, #8500ff);
+
+  &:hover {
+    transition-duration: .8s;
+    opacity: .8;
+    background-image: linear-gradient(180deg, #be33f5, #8500ff);
+  }
+
+  &:active {}
+}
+
+.gameCollectionWrapper {
+  background-color: #1a191c;
+}
+
+.gameListWrapper {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.nextButton {
+  @include button;
+}
+
+.previousButton {
+  @include button;
+}
+
+.buttonNPWrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  position: fixed;
+  justify-content: space-evenly;
+  bottom: 0;
+  background-color: #383838;
+  padding: 12px 0;
+  z-index: 3;
+}

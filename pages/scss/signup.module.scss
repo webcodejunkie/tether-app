@@ -1,0 +1,118 @@
+.gamerTypeContainer {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+.formWrapper {
+  width: 60%;
+}
+
+.registerForm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 5rem 0;
+  border-radius: 5px;
+  background: linear-gradient(45deg, #896cff, #bf56eb);
+  filter: drop-shadow(2px 4px 6px black);
+  color: white;
+}
+
+.registerWrapper {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  align-items: center;
+  height: 100vh;
+}
+
+.fButtonContainer {
+  width: 50%;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.buttonContainer {
+  width: 50%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.submitButton {
+  padding: 15px 65px;
+  border: 1px solid transparent;
+  background-color: #00c96c;
+  border-radius: 25px;
+  color: white;
+  transition-duration: 0.8s;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #00b762;
+    opacity: .8;
+    transition-duration: .8s;
+  }
+
+  &:active {
+    transform: scale(.9);
+  }
+}
+
+.registerButton {
+  padding: 15px 65px;
+  border: 1px solid transparent;
+  background-color: #65c6ff;
+  border-radius: 25px;
+  color: white;
+  transition-duration: 0.8s;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #5eb8ed;
+    opacity: .8;
+    transition-duration: .8s;
+  }
+
+  &:active {
+    transform: scale(.9);
+  }
+}
+
+
+
+.errorAlert {
+  background-color: red;
+  padding: 10px 15px;
+  border-radius: 20px;
+  transition-duration: 1s;
+  font-size: 16px;
+  position: absolute;
+  top: 0;
+
+  &:empty {
+    transition-duration: .8s;
+    padding: 0;
+  }
+}
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+  .formWrapper {
+    width: 100%;
+  }
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+  .formWrapper {
+    width: 80%;
+  }
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+  .formWrapper {
+    width: 50%;
+  }
+}
