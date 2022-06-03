@@ -19,8 +19,6 @@ export default function TopMenu(props) {
   const [searchGame, setSearchGame] = useState('');
   const [sGenres, setSGenres] = useState(false);
 
-  const APIKEY = '?page_size=40&key=52473471b8234826b9fa82d196ae5ee6';
-
 
   const showGenres = () => {
     setSGenres(true);
@@ -35,7 +33,7 @@ export default function TopMenu(props) {
     let uncapSearch = searchGame.toLowerCase();
     let newTitle = searchGame.toUpperCase();
     let search = `&search=${uncapSearch}`
-    axios.get('https://api.rawg.io/api/games' + APIKEY + search, {
+    axios.get('https://api.rawg.io/api/games' + process.env.RAWG_API_KEY + search, {
     })
       .then((res) => {
         console.log(res);
@@ -61,7 +59,7 @@ export default function TopMenu(props) {
     let newTitle = el;
 
     if (newTitle === 'New and Trending') {
-      axios.get('https://api.rawg.io/api/games' + APIKEY + trendingRequest, {
+      axios.get('https://api.rawg.io/api/games' + process.env.RAWG_API_KEY + trendingRequest, {
       })
         .then((res) => {
           console.log(res);
@@ -74,7 +72,7 @@ export default function TopMenu(props) {
           console.error('Error: ' + err);
         });
     } else if (newTitle === 'Singleplayer') {
-      axios.get('https://api.rawg.io/api/games' + APIKEY + singlePRequest, {
+      axios.get('https://api.rawg.io/api/games' + process.env.RAWG_API_KEY + singlePRequest, {
       })
         .then((res) => {
           console.log(res);
@@ -87,7 +85,7 @@ export default function TopMenu(props) {
           console.error('Error: ' + err);
         });
     } else if (newTitle === 'Multiplayer') {
-      axios.get('https://api.rawg.io/api/games' + APIKEY + multiplayerRequest, {
+      axios.get('https://api.rawg.io/api/games' + process.env.RAWG_API_KEY + multiplayerRequest, {
       })
         .then((res) => {
           console.log(res);
@@ -100,7 +98,7 @@ export default function TopMenu(props) {
           console.error('Error: ' + err);
         });
     } else if (newTitle === 'Adventure') {
-      axios.get('https://api.rawg.io/api/games' + APIKEY + adventureRequest, {
+      axios.get('https://api.rawg.io/api/games' + process.env.RAWG_API_KEY + adventureRequest, {
       })
         .then((res) => {
           console.log(res);
@@ -113,7 +111,7 @@ export default function TopMenu(props) {
           console.error('Error: ' + err);
         });
     } else if (newTitle === 'Horror') {
-      axios.get('https://api.rawg.io/api/games' + APIKEY + horrorRequest, {
+      axios.get('https://api.rawg.io/api/games' + process.env.RAWG_API_KEY + horrorRequest, {
       })
         .then((res) => {
           console.log(res);
@@ -126,7 +124,7 @@ export default function TopMenu(props) {
           console.error('Error: ' + err);
         });
     } else if (newTitle === 'Action') {
-      axios.get('https://api.rawg.io/api/games' + APIKEY + actionRequest, {
+      axios.get('https://api.rawg.io/api/games' + process.env.RAWG_API_KEY + actionRequest, {
       })
         .then((res) => {
           console.log(res);

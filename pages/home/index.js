@@ -30,7 +30,6 @@ export default function HomeMenu() {
   ]);
 
   const newTrending = '&dates=2021-10-10,2022-10-10&ordering=-added';
-  const APIKEY = '?page_size=40&key=52473471b8234826b9fa82d196ae5ee6';
 
   const checkUser = () => {
     if (user === null || undefined) {
@@ -41,7 +40,7 @@ export default function HomeMenu() {
   }
 
   const getGames = () => {
-    axios.get(`https://api.rawg.io/api/games` + APIKEY + newTrending, {
+    axios.get(`https://api.rawg.io/api/games` + process.env.RAWG_API_KEY + newTrending, {
     })
       .then((res) => {
         console.log(res);
