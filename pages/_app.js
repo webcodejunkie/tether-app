@@ -1,4 +1,5 @@
 import '../styles/global.scss';
+import '../styles/nprogress.scss';
 import { wrapper, store } from '../store/store';
 import { Provider } from 'react-redux';
 

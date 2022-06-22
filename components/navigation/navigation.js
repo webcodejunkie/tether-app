@@ -1,16 +1,14 @@
 import Link from 'next/link';
 import styles from './nav.module.scss';
-import { useSelector, useDispatch } from 'react-redux';
-import { unSetUser } from '../../features/users/userSlice';
+import { useSelector } from 'react-redux';
+
+import Avatar from '@mui/material/Avatar';
+import DashBtn from '../dashboard/dashboard-btn/dashBtn';
+import Button from '@mui/material/Button';
 
 export default function Navigation() {
   const { user } = useSelector((state) => state.user)
-  const dispatch = useDispatch();
 
-  const onLogOut = () => {
-    localStorage.clear();
-    dispatch(unSetUser());
-  }
 
   return (
     <nav className={styles.wrapper}>
@@ -18,47 +16,40 @@ export default function Navigation() {
         <h1>Tether</h1>
       </div>
       <ul className={styles.container}>
-        <li className={styles.navLinks}>
+        {user && (
           <Link href="/home">
-            <a>Home</a>
+            <Button>
+              Home
+            </Button>
           </Link>
-        </li>
-        {
-          user ?
-            <div>
+        )}
+        {user && <DashBtn />}
 
-            </div>
-            :
-            <li className={styles.navLinks}>
-              <Link href="/login">
-                <a>Login</a>
-              </Link>
-            </li>
-        }
-        {
-          user ?
-            <div>
+        <div className={styles.avatarEl}>
+          {user && (
+            <Avatar
+              alt="user-photo"
+              src={user.user.ProfilePicture}
+              sx={{ width: 40, height: 40 }}
+            />
+          )}
+          {user && <h5>{user.user.Username}</h5>}
+        </div>
 
-            </div>
-            :
-            <li className={styles.navLinks}>
-              <Link href="/signup">
-                <a>Sign Up</a>
-              </Link>
-            </li>
-        }
-        {
-          user ?
-            <li className={styles.navLinks} onClick={onLogOut}>
-              <Link href="/">
-                <a>Sign Out</a>
-              </Link>
-            </li>
-            :
-            <div>
-
-            </div>
-        }
+        {!user && (
+          <li className={styles.navLinks}>
+            <Link href="/login">
+              <p className={styles.iconHover}>Login</p>
+            </Link>
+          </li>
+        )}
+        {!user && (
+          <li className={styles.navLinks}>
+            <Link href="/signup">
+              <p className={styles.iconHover}>Sign Up</p>
+            </Link>
+          </li>
+        )}
       </ul>
     </nav>
   );

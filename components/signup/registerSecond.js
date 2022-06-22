@@ -9,6 +9,11 @@ export default function RegisterSecondForm(props) {
         {props.error}
       </p>
 
+      <form className={styles.bioTextArea}>
+        <h1>Tell the gamers what you want them to know!</h1>
+        <textarea maxLength="250" rows="5" cols="100"></textarea>
+      </form>
+
       <div className={styles.gamerTypeContainer}>
         <h1>What kind of player are you?</h1>
         <div>

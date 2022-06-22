@@ -1,21 +1,40 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const initialState = {
-  user: null,
-  loading: true
-}
-
 export const userReducer = createSlice({
   name: 'user',
-  initialState,
+  initialState: {
+    loading: true
+  },
   reducers: {
     setUser: (state, action) => {
 
-      return {
-        user: action.payload,
-        loading: false
-      }
+      state.user = action.payload;
+      state.loading = false;
 
+    },
+
+    setFavorites: (state, action) => {
+      state.user.user.Favorites.push(action.payload);
+    },
+
+    unFavorite: (state, action) => {
+      let array = state.user.user.Favorites;
+      const index = state.user.user.Favorites.indexOf(action.payload);
+      if (index > -1) {
+        array.splice(index, 1);
+      }
+    },
+
+    setFriend: (state, action) => {
+      state.user.user.Friends.push(action.payload);
+    },
+
+    unSetFriend: (state, action) => {
+      let array = state.user.user.Friends;
+      const index = state.user.user.Friends.indexOf(action.payload);
+      if (index > -1) {
+        array.splice(index, 1);
+      }
     },
 
     unSetUser: (state) => {
@@ -24,5 +43,5 @@ export const userReducer = createSlice({
   }
 });
 
-export const { setUser, unSetUser } = userReducer.actions;
+export const { setUser, unSetUser, setFavorites, unFavorite, setFriend, unSetFriend } = userReducer.actions;
 export default userReducer.reducer;

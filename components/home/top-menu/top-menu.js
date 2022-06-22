@@ -1,6 +1,7 @@
 import styles from './top-menu.module.scss';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
+import NProgress from 'nprogress';
 
 export default function TopMenu(props) {
   useEffect(() => {
@@ -14,9 +15,6 @@ export default function TopMenu(props) {
     'Horror',
     'Action'
   ];
-
-  const [title, setTitle] = useState('New and Trending');
-  const [searchGame, setSearchGame] = useState('');
   const [sGenres, setSGenres] = useState(false);
 
 
@@ -26,26 +24,6 @@ export default function TopMenu(props) {
 
   const closeGenres = () => {
     setSGenres(false);
-  }
-
-  const gameSearch = (e) => {
-    e.preventDefault();
-    let uncapSearch = searchGame.toLowerCase();
-    let newTitle = searchGame.toUpperCase();
-    let search = `&search=${uncapSearch}`
-    axios.get('https://api.rawg.io/api/games' + process.env.RAWG_API_KEY + search, {
-    })
-      .then((res) => {
-        console.log(res);
-        const data = res.data.results;
-        setTitle(newTitle);
-        props.setNext(res.data.next);
-        props.setPrevious(res.data.previous);
-        props.setGames(data);
-      })
-      .catch((err) => {
-        console.error('Error: ' + err);
-      });
   }
 
   const setNewTitle = (el) => {
@@ -59,94 +37,113 @@ export default function TopMenu(props) {
     let newTitle = el;
 
     if (newTitle === 'New and Trending') {
+      NProgress.start();
+      props.reLoader();
       axios.get('https://api.rawg.io/api/games' + process.env.RAWG_API_KEY + trendingRequest, {
       })
         .then((res) => {
-          console.log(res);
           const data = res.data.results;
           props.setNext(res.data.next);
           props.setPrevious(res.data.previous);
           props.setGames(data);
+          props.setLoading(false);
+          NProgress.done();
         })
         .catch((err) => {
           console.error('Error: ' + err);
         });
     } else if (newTitle === 'Singleplayer') {
+      NProgress.start();
+      props.reLoader();
       axios.get('https://api.rawg.io/api/games' + process.env.RAWG_API_KEY + singlePRequest, {
       })
         .then((res) => {
-          console.log(res);
           const data = res.data.results;
           props.setNext(res.data.next);
           props.setPrevious(res.data.previous);
           props.setGames(data);
+          props.setLoading(false);
+          NProgress.done();
         })
         .catch((err) => {
           console.error('Error: ' + err);
         });
     } else if (newTitle === 'Multiplayer') {
+      NProgress.start();
+      props.reLoader();
       axios.get('https://api.rawg.io/api/games' + process.env.RAWG_API_KEY + multiplayerRequest, {
       })
         .then((res) => {
-          console.log(res);
           const data = res.data.results;
           props.setNext(res.data.next);
           props.setPrevious(res.data.previous);
           props.setGames(data);
+          props.setLoading(false);
+          NProgress.done();
         })
         .catch((err) => {
           console.error('Error: ' + err);
         });
     } else if (newTitle === 'Adventure') {
+      NProgress.start();
+      props.reLoader();
       axios.get('https://api.rawg.io/api/games' + process.env.RAWG_API_KEY + adventureRequest, {
       })
         .then((res) => {
-          console.log(res);
           const data = res.data.results;
           props.setNext(res.data.next);
           props.setPrevious(res.data.previous);
           props.setGames(data);
+          props.setLoading(false);
+          NProgress.done();
         })
         .catch((err) => {
           console.error('Error: ' + err);
         });
     } else if (newTitle === 'Horror') {
+      NProgress.start();
+      props.reLoader();
       axios.get('https://api.rawg.io/api/games' + process.env.RAWG_API_KEY + horrorRequest, {
       })
         .then((res) => {
-          console.log(res);
           const data = res.data.results;
           props.setNext(res.data.next);
           props.setPrevious(res.data.previous);
           props.setGames(data);
+          props.setLoading(false);
+          NProgress.done();
         })
         .catch((err) => {
           console.error('Error: ' + err);
         });
     } else if (newTitle === 'Action') {
+      NProgress.start();
+      props.reLoader();
       axios.get('https://api.rawg.io/api/games' + process.env.RAWG_API_KEY + actionRequest, {
       })
         .then((res) => {
-          console.log(res);
           const data = res.data.results;
           props.setNext(res.data.next);
           props.setPrevious(res.data.previous);
           props.setGames(data);
+          props.setLoading(false);
+          NProgress.done();
         })
         .catch((err) => {
           console.error('Error: ' + err);
         });
     }
 
-    setTitle(newTitle);
+    props.setTitle(newTitle);
   }
 
   return (
-    <div>
+    <div className={styles.topMenuContainer}>
       <div className={styles.topMenuWrapper}>
         <div>
         </div>
         <div className={styles.topMenuLinkWrapper}>
+          <p className={styles.topMenuLinkHeaders}>Genres</p>
           {
             titles.map((el, index) => {
               return (
@@ -160,23 +157,11 @@ export default function TopMenu(props) {
               )
             })
           }
+          <div>
+            <p className={styles.topMenuLinkHeaders}>New Releases</p>
+          </div>
         </div>
-        <form className={styles.inputWrapper}>
-
-          < input
-            placeholder='Search Games'
-            onChange={(e) => { setSearchGame(e.target.value) }}
-            value={searchGame}
-          />
-          < input
-            type='submit'
-            onClick={(e) => { gameSearch(e) }}
-            className={styles.submitButton}
-          />
-
-        </form>
       </div>
-      <h1 className={styles.headerTitle}>{title}</h1>
     </div>
   )
 }

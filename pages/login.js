@@ -15,7 +15,8 @@ export default function Login() {
 
 
   const dispatch = useDispatch();
-  const loading = useSelector((state) => state.user.loading)
+  const loading = useSelector((state) => state.user.loading);
+  const user = useSelector((state) => state.user);
   const router = useRouter();
 
   const [username, setUsername] = useState('');
@@ -42,6 +43,7 @@ export default function Login() {
       .then((res) => {
         const data = res.data;
         dispatch(setUser(data));
+        console.log(user);
         localStorage.setItem('username', data.user.Username);
         localStorage.setItem('token', data.token);
         router.push('/home');

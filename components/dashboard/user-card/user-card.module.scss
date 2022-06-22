@@ -1,0 +1,28 @@
+.userCardContainer {
+  display: flex;
+  flex-direction: column;
+  width: 340px;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin: 5px;
+  border-radius: 13px;
+  background-color: #26262d;
+  color: white;
+  filter: drop-shadow(2px 4px 6px black);
+  transition: .5s ease-in-out;
+
+  &:hover {
+    transition: .5s ease-in-out;
+    transform: scale(1.05);
+    z-index: 3;
+  }
+}
+
+.username {
+  padding: 10px;
+}
+
+.about {
+  padding: 20px;
+}

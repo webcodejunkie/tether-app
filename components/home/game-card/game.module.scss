@@ -1,0 +1,132 @@
+.gameWrapper {
+  width: 440px;
+  text-align: center;
+  background-color: #302b2b;
+  color: #FFF;
+  margin: 10px;
+  transition-duration: 1s;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  &:hover {
+    transition: all .5s ease-in-out;
+    transform: scale(1.1);
+  }
+}
+
+.gameTitle {
+  padding: 18px;
+  background-color: #1e1818;
+  width: 100%;
+}
+
+.gameCover {
+  width: 100%;
+}
+
+.platIcons {
+  width: 50px;
+  height: auto;
+}
+
+.gameModalTitle {
+  font-size: 55px;
+}
+
+.gameModalContainer {
+  overflow-y: scroll;
+  background: #121212fc;
+  color: white;
+  position: fixed;
+  width: 100%;
+  left: 0;
+  top: 0;
+  height: 100vh;
+  z-index: 999;
+  padding: 0 6rem;
+}
+
+.gameModalWrapper {}
+
+.modalImage {
+  width: 50%;
+  height: auto;
+}
+
+.gameModalImageWrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.modalHeaders {
+  font-size: 45px;
+}
+
+.modalLinks {
+  color: #FFF;
+  text-decoration: underline;
+
+  &:hover {
+    color: #a5a5a5;
+  }
+}
+
+.modalGenreList {
+  display: flex;
+  align-items: center;
+}
+
+.genreLinks {
+  padding: 2px;
+}
+
+.modalDevelopersList {
+  display: flex;
+  align-items: center;
+}
+
+.smallModalColWrapper {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-evenly;
+
+}
+
+.closeModalBtn {
+  position: absolute;
+  right: 2%;
+  top: 3%;
+  border: 0px solid transparent;
+  background-color: red;
+  padding: 10px 25px;
+  border-radius: 25px;
+  color: #fff;
+  transition-duration: .8s;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #db0000;
+    transition-duration: .8s;
+  }
+}
+
+.launchModal {
+  position: absolute;
+
+  &:hover {
+    color: red;
+  }
+}
+
+.dropIcon {
+  font-size: 14px;
+  color: #8a7c7c;
+  cursor: pointer;
+  transition-duration: .8s;
+
+  &:hover {
+    color: #FFF;
+    transition-duration: .8s;
+  }
+}

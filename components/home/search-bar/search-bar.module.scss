@@ -1,0 +1,35 @@
+.submitButton {
+  transition-duration: .5s;
+
+  &:hover {
+    transition-duration: .5s;
+    background-color: #00ed00;
+    opacity: .8;
+  }
+}
+
+.inputWrapper {
+  padding: 30px 0;
+  width: 100%;
+  display: flex;
+}
+
+.searchInput {
+  width: 100%;
+  background: #323c39;
+  transition-duration: .5s;
+  animation-timing-function: ease-in-out;
+  color: #FFF;
+  padding: 14px;
+
+  &:hover {
+    transition-duration: .5s;
+    animation-timing-function: ease-in-out;
+    background: #FFF;
+  }
+}
+
+.searchError {
+  position: fixed;
+  top: 0;
+}
