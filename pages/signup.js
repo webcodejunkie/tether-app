@@ -21,6 +21,9 @@ export default function Register(props) {
   const [email, setEmail] = useState('');
   const [birthday, setBirthday] = useState('');
   const [playerType, setPlayerType] = useState('');
+  const [country, setCountry] = useState('');
+  const [region, setRegion] = useState('');
+  const [bio, setBio] = useState('');
   const [error, setError] = useState('');
   const [stepOne, setStepOne] = useState(true);
 
@@ -31,7 +34,10 @@ export default function Register(props) {
       Password: password,
       Email: email,
       Birthday: birthday,
-      PlayerType: playerType
+      PlayerType: playerType,
+      Bio: bio,
+      Country: country,
+      Region: region,
     })
       .then((res) => {
         const data = res.data;
@@ -84,27 +90,26 @@ export default function Register(props) {
       setError('Username must be between, 4 to 12 characters.');
     } else if (username.length >= 13) {
       setError('Username is too long, max character is 12.');
+    } else if (keys.some(el => username.includes(el))) {
+      setError("Username can't contain alphanumeric characters.");
+    } else if (keys.some(el => password.includes(el))) {
+      setError("Password can't contain alphanumeric characters.");
+    } else if (password.length <= 6) {
+      setError('Password needs to be longer.')
+    } else if ((country === '' || null) && (region === '' || null)) {
+      setError('Please select a country and region.')
+    } else if (birthday === Date.now()) {
+      setError('You are just a baby');
+    } else {
+      setError('')
     }
 
-    if (keys.some(el => username.includes(el))) {
-      setError('Username can not contain alphanumeric characters.');
-    }
-
-    if (keys.some(el => password.includes(el))) {
-      setError('Password can not contain alphanumeric characters.');
-    }
-
-
-
-    setTimeout(() => {
-      setError('');
-    }, 5000);
   }
 
   return (
     <div className={styles.registerWrapper}>
       {
-        stepOne ?
+        stepOne ? (
           <RegisterFirstForm
             username={username}
             setUsername={setUsername}
@@ -115,13 +120,19 @@ export default function Register(props) {
             birthday={birthday}
             setBirthday={setBirthday}
             handleNext={handleNext}
+            setCountry={setCountry}
+            country={country}
+            region={region}
+            setRegion={setRegion}
             error={error}
           />
+        )
           :
           <RegisterSecondForm
             handleSubmit={handleSubmit}
             playerType={playerType}
             setPlayerType={setPlayerType}
+            setBio={setBio}
           />
       }
     </div>

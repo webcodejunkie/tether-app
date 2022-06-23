@@ -107,6 +107,19 @@
   padding: 1rem 0;
 }
 
+.countrySelContainer {
+  padding: 20px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  &>select {
+    padding: 5px;
+    margin: 5px;
+    border-radius: 15px;
+  }
+}
+
 /* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 600px) {
   .formWrapper {

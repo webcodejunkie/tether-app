@@ -4,6 +4,7 @@ import axios from 'axios';
 import NProgress from 'nprogress';
 import Alert from '@mui/material/Alert';
 import AlertTitle from '@mui/material/AlertTitle';
+import AlertBar from '../../alert/alert';
 
 export default function SearchBar(props) {
 
@@ -61,13 +62,7 @@ export default function SearchBar(props) {
   return (
     <form className={styles.inputWrapper}>
       {
-        isError ?
-          <Alert severity="error" className={styles.searchError}>
-            <AlertTitle>Error</AlertTitle>
-            {error}
-          </Alert>
-          :
-          <div></div>
+        isError && <AlertBar error={error} errorType={'error'} class={styles.searchError} />
       }
       < input
         placeholder='Search Games'

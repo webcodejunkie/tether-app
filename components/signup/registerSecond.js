@@ -11,7 +11,14 @@ export default function RegisterSecondForm(props) {
 
       <form className={styles.bioTextArea}>
         <h1>Tell the gamers what you want them to know!</h1>
-        <textarea maxLength="250" rows="5" cols="100"></textarea>
+        <textarea
+          maxLength="250"
+          rows="5"
+          cols="100"
+          onChange={e => props.setBio(e.target.value)}
+        >
+
+        </textarea>
       </form>
 
       <div className={styles.gamerTypeContainer}>
@@ -34,7 +41,6 @@ export default function RegisterSecondForm(props) {
         <button
           onClick={props.handleNext}
           className={styles.registerButton}
-          type="submit"
         >Back
         </button>
         <button
