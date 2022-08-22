@@ -1,20 +1,33 @@
 import Button from '@mui/material/Button';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
+import { createTheme, ThemeProvider } from '@mui/material';
 import Link from 'next/link';
 import * as React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { unSetUser } from '../../../features/users/userSlice';
 
-export default function DashBtn(props) {
+export default function DashBtn() {
+
+  const theme = createTheme({
+    palette: {
+      link: {
+        main: '#00000',
+        constrastText: '#fff'
+      }
+    }
+  })
+
   const { user } = useSelector((state) => state.user)
   const dispatch = useDispatch();
 
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
+
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
+
   const handleClose = () => {
     setAnchorEl(null);
   };
@@ -26,21 +39,24 @@ export default function DashBtn(props) {
 
   return (
     <div>
-      <Button
-        id="basic-button"
-        aria-controls={open ? 'basic-menu' : undefined}
-        aria-haspopup="true"
-        aria-expanded={open ? 'true' : undefined}
-        onClick={handleClick}
-      >
-        Dashboard
-      </Button>
+      <ThemeProvider theme={theme}>
+        <Button
+          color="link"
+          id="basic-button"
+          aria-controls={open ? 'basic-menu' : undefined}
+          aria-haspopup="true"
+          aria-expanded={open ? 'true' : undefined}
+          onClick={handleClick}
+        >
+          Dashboard
+        </Button>
+      </ThemeProvider>
       <Menu
         id="basic-menu"
         anchorEl={anchorEl}
         open={open}
         onClose={handleClose}
-        getContentAnchorEl={null}
+        getcontentanchorel={null}
         anchorOrigin={{
           vertical: 'top',
           horizontal: 'right',

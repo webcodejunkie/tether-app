@@ -16,11 +16,16 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 5rem;
+  padding: 3rem;
+  margin: 20px 0;
   border-radius: 5px;
-  background: linear-gradient(45deg, #896cff, #bf56eb);
+  background: linear-gradient(45deg, #000000, #8e27b9);
   filter: drop-shadow(2px 4px 6px black);
   color: white;
+
+  &>div {
+    padding: 2rem 0;
+  }
 }
 
 .registerWrapper {
@@ -28,7 +33,6 @@
   justify-content: center;
   width: 100%;
   align-items: center;
-  height: 100vh;
 }
 
 .fButtonContainer {
@@ -117,6 +121,16 @@
     padding: 5px;
     margin: 5px;
     border-radius: 15px;
+  }
+}
+
+.profilePictureContainter {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  &>input {
+    color: #FFF;
   }
 }
 

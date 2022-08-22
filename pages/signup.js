@@ -24,6 +24,7 @@ export default function Register(props) {
   const [country, setCountry] = useState('');
   const [region, setRegion] = useState('');
   const [bio, setBio] = useState('');
+  const [profilePicture, setProfilePicture] = useState(null);
   const [error, setError] = useState('');
   const [stepOne, setStepOne] = useState(true);
 
@@ -56,6 +57,11 @@ export default function Register(props) {
     } else {
       setStepOne(false);
     }
+  }
+
+  const onImageChange = (e) => {
+    const [file] = e.target.files;
+    setProfilePicture(URL.createObjectURL(file));
   }
 
   const errorChecker = () => {
@@ -133,6 +139,8 @@ export default function Register(props) {
             playerType={playerType}
             setPlayerType={setPlayerType}
             setBio={setBio}
+            onImageChange={onImageChange}
+            profilePicture={profilePicture}
           />
       }
     </div>

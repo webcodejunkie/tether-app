@@ -1,4 +1,7 @@
 import PersonSearchIcon from '@mui/icons-material/PersonSearch';
+import { Button } from '@mui/material';
+import AddIcon from '@mui/icons-material/Add';
+import RemoveIcon from '@mui/icons-material/Remove';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import styles from './features.module.scss';
@@ -12,15 +15,17 @@ export default function GameFeatures(props) {
   const { user } = useSelector((state) => state.user);
   const dispatch = useDispatch();
 
+  // Favorite Game Hook
   const onFavorite = (e) => {
     e.preventDefault();
     const token = localStorage.getItem('token');
     const user = localStorage.getItem('username');
 
     axios.post(`https://tetherapi.herokuapp.com/tether/${user}/game/` + props.id, {}, {
-      headers: { Authorization: `Bearer ${token}` }
+      headers: { Authorization: `Bearer ${token}`, }
     })
       .then((res) => {
+        // Also reflect change to redux to take UI effects
         dispatch(setFavorites(`${props.id}`));
         const data = res;
         console.log(data);
@@ -30,6 +35,7 @@ export default function GameFeatures(props) {
       });
   }
 
+  // Unfavorite Game
   const onUnFavorite = () => {
     const token = localStorage.getItem('token');
     const user = localStorage.getItem('username');
@@ -38,6 +44,7 @@ export default function GameFeatures(props) {
       headers: { Authorization: `Bearer ${token}` }
     })
       .then((res) => {
+        // Also reflect change to redux to take UI effects
         dispatch(unFavorite(`${props.id}`));
         console.log({ user });
         const data = res;
@@ -50,20 +57,18 @@ export default function GameFeatures(props) {
 
   return (
     <div className={styles.featuresContainer}>
-      <PersonSearchIcon className={classNames(
-        styles.icons,
-      )}
-        sx={{ fontSize: 35 }} />
+      <Button>Play now</Button>
 
       {
-        user && (user.user.Favorites.some(el => el.includes(props.id))) ?
-          <FavoriteIcon className={classNames(
+        // Check to see if redux changes occured and update UI
+        user && (user.Favorites.some(el => el.includes(props.id))) ?
+          <RemoveIcon className={classNames(
             styles.icon,
-            (user.user.Favorites.some(el => el.includes(props.id))) && styles.isFavorited
+            (user.Favorites.some(el => el.includes(props.id))) && styles.isFavorited
           )}
             sx={{ fontSize: 35 }} onClick={onUnFavorite} />
           :
-          <FavoriteBorderIcon
+          <AddIcon
             className={styles.icons}
             onClick={(e) => { onFavorite(e) }}
             sx={{ fontSize: 35 }}

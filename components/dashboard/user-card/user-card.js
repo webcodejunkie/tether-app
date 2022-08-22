@@ -1,6 +1,6 @@
 import styles from './user-card.module.scss';
 
-import Avatar from '@mui/material/Avatar';
+import { Stack, Avatar } from '@mui/material';
 import UserFeatures from '../user-card-features/userFeatures';
 
 import { useSelector } from "react-redux";
@@ -9,17 +9,19 @@ export default function UserCard(props) {
 
   const { user } = useSelector((state) => state.user);
 
+  console.log(props);
+
   return (
     <div className={styles.userCardContainer}>
-      <Avatar alt="user-image" sx={{ width: 130, height: 130 }} src={props.users.ProfilePicture} />
-      <p className={styles.username}>{props.users.Username}</p>
-      <div className={styles.about} >
-        <p>About Me</p>
-        <small>{props.users.Bio}</small>
-      </div>
-      {
-        props.users._id !== user.user._id && <UserFeatures id={props.users._id} />
-      }
+      <Avatar alt="user-image" sx={{ width: 100, height: 100 }} src={props.users.ProfilePicture} />
+      <Stack
+        alignItems="center"
+      >
+        <p className={styles.username}>{props.users.Username}</p>
+        {
+          props.users.Username !== user.Username && <UserFeatures users={props.users} />
+        }
+      </Stack>
     </div>
   )
 }

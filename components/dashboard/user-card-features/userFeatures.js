@@ -1,5 +1,6 @@
 import styles from './user-features.module.scss';
 import Stack from '@mui/material/Stack';
+import PersonRemoveIcon from '@mui/icons-material/PersonRemove';
 import PersonAddAltIcon from '@mui/icons-material/PersonAddAlt';
 import PersonIcon from '@mui/icons-material/Person';
 import { useSelector, useDispatch } from 'react-redux';
@@ -13,13 +14,13 @@ export default function UserFeatures(props) {
 
   const onFriend = () => {
     const token = localStorage.getItem('token');
-    const user = localStorage.getItem('username');
+    const users = localStorage.getItem('username');
 
-    axios.post(`https://tetherapi.herokuapp.com/tether/${user}/user/` + props.id, {}, {
+    axios.post(`https://tetherapi.herokuapp.com/tether/${user}/user/` + props.users.Username, {}, {
       headers: { Authorization: `Bearer ${token}` }
     })
       .then((res) => {
-        dispatch(setFriend(`${props.id}`));
+        dispatch(setFriend(`${props.users.Username}`));
         const data = res;
         console.log(data);
       })
@@ -32,11 +33,11 @@ export default function UserFeatures(props) {
     const token = localStorage.getItem('token');
     const user = localStorage.getItem('username');
 
-    axios.delete(`https://tetherapi.herokuapp.com/tether/${user}/user/` + props.id, {
+    axios.delete(`https://tetherapi.herokuapp.com/tether/${user}/user/` + props.users.Username, {
       headers: { Authorization: `Bearer ${token}` }
     })
       .then((res) => {
-        dispatch(unSetFriend(`${props.id}`));
+        dispatch(unSetFriend(`${props.users.Username}`));
         const data = res;
         console.log(data);
       })
@@ -48,11 +49,20 @@ export default function UserFeatures(props) {
   return (
     <Stack direction="row" spacing={2} className={styles.featureContainer}>
       {
-        (user.user.Friends.some(el => el.includes(props.id))) ?
-          <PersonIcon className={classNames(
-            styles.icons,
-            (user.user.Friends.some(el => el.includes(props.id))) && styles.isFriended,
-          )} onClick={onUnFriend} />
+        (user.Friends.some(el => el.includes(props.users.Username))) ?
+          (
+            <Stack
+              direction="row"
+            >
+              <PersonRemoveIcon className={classNames(
+                (user.Friends.some(el => el.includes(props.users.Username))) && styles.isOnUnfriend,
+              )} onClick={onUnFriend} />
+              <PersonIcon className={classNames(
+                styles.icons,
+                (user.Friends.some(el => el.includes(props.users.Username))) && styles.isFriended,
+              )} />
+            </Stack>
+          )
           :
           <PersonAddAltIcon className={classNames(
             styles.icons,

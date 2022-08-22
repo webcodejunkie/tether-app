@@ -1,4 +1,22 @@
+$onDarkBG: #FFF;
+$textAlignCenter: center;
+
 .userList {
   display: flex;
   justify-content: center;
+}
+
+.friendsHeader {
+  color: $onDarkBG;
+  text-align: $textAlignCenter;
+}
+
+.favoritesHeader {
+  color: $onDarkBG;
+  text-align: $textAlignCenter;
+}
+
+.userHeader {
+  color: $onDarkBG;
+  text-align: $textAlignCenter;
 }

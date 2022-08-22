@@ -2,8 +2,6 @@ import styles from './search-bar.module.scss';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import NProgress from 'nprogress';
-import Alert from '@mui/material/Alert';
-import AlertTitle from '@mui/material/AlertTitle';
 import AlertBar from '../../alert/alert';
 
 export default function SearchBar(props) {

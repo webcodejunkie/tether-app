@@ -1,13 +1,12 @@
 // Components
 import Layout from "../../components/layout"
 import Game from "../../components/home/game-card/game";
-import SideMenu from "../../components/home/side-menu/side-menu";
 import TopMenu from "../../components/home/top-menu/top-menu";
 
 import axios from "axios"
 import { useEffect, useState } from "react";
 import { css } from "@emotion/react";
-import { SyncLoader } from "react-spinners";
+import { FadeLoader } from "react-spinners";
 // Redux
 import { useSelector, useDispatch } from "react-redux";
 import { useRouter } from 'next/router';
@@ -48,6 +47,7 @@ export default function HomeMenu() {
 
   const newTrending = '&dates=2021-10-10,2022-10-10&ordering=-added';
 
+  // Check to see if user is active
   const checkUser = () => {
     if (!user) {
       dispatch(unSetUser());
@@ -56,6 +56,7 @@ export default function HomeMenu() {
     console.log(user);
   }
 
+  // Loading state to display games
   const isLoaded = () => {
     if (games === (null || [])) {
       setLoading(true);
@@ -64,11 +65,13 @@ export default function HomeMenu() {
     }
   }
 
+  // Reload games Hook
   const reLoader = () => {
     setGames([]);
     setLoading(true);
   }
 
+  // Get games from RAWG API using newTrending to modify responce
   const getGames = () => {
     NProgress.start()
     reLoader();
@@ -87,6 +90,7 @@ export default function HomeMenu() {
       })
   };
 
+  // Hook to get next rests of games page (i.e, page +1)
   const getNext = () => {
     reLoader();
     NProgress.start()
@@ -105,6 +109,7 @@ export default function HomeMenu() {
       });
   };
 
+  // Hook to get previous rests of games page (i.e, page -1)
   const getPrevious = () => {
     reLoader()
     NProgress.start()
@@ -123,6 +128,7 @@ export default function HomeMenu() {
       });
   };
 
+  // Handle when the page hits the bottom
   const handleScroll = () => {
     let position = window.pageYOffset;
     let innerHeight = window.innerHeight;
@@ -133,8 +139,8 @@ export default function HomeMenu() {
     }
   };
 
+  // Button Component
   const ButtonWrapper = () => {
-
     return (
       <div className={styles.buttonNPWrapper}>
         <button className={styles.previousButton} onClick={getPrevious}>Previous</button>
@@ -146,7 +152,6 @@ export default function HomeMenu() {
 
   return (
     <div>
-      <SideMenu />
       <div className={styles.gameCollectionWrapper}>
         <div className={styles.gameListWrapper}>
           <TopMenu
@@ -175,7 +180,7 @@ export default function HomeMenu() {
             <ButtonWrapper />
             {
               loading ?
-                <SyncLoader color="#FFF" loading={loading} size={150} css={override} />
+                <FadeLoader color="#FFF" loading={loading} size={150} css={override} />
                 :
                 <div className={styles.gameListContainer}>
                   {games.map(((game, index) => {

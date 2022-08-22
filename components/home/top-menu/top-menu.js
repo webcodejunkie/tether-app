@@ -143,7 +143,6 @@ export default function TopMenu(props) {
         <div>
         </div>
         <div className={styles.topMenuLinkWrapper}>
-          <p className={styles.topMenuLinkHeaders}>Genres</p>
           {
             titles.map((el, index) => {
               return (
@@ -157,9 +156,6 @@ export default function TopMenu(props) {
               )
             })
           }
-          <div>
-            <p className={styles.topMenuLinkHeaders}>New Releases</p>
-          </div>
         </div>
       </div>
     </div>

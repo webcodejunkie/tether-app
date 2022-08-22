@@ -14,24 +14,24 @@ export const userReducer = createSlice({
     },
 
     setFavorites: (state, action) => {
-      state.user.user.Favorites.push(action.payload);
+      state.user.Favorites.push(action.payload);
     },
 
     unFavorite: (state, action) => {
-      let array = state.user.user.Favorites;
-      const index = state.user.user.Favorites.indexOf(action.payload);
+      let array = state.user.Favorites;
+      const index = state.user.Favorites.indexOf(action.payload);
       if (index > -1) {
         array.splice(index, 1);
       }
     },
 
     setFriend: (state, action) => {
-      state.user.user.Friends.push(action.payload);
+      state.user.Friends.push(action.payload);
     },
 
     unSetFriend: (state, action) => {
-      let array = state.user.user.Friends;
-      const index = state.user.user.Friends.indexOf(action.payload);
+      let array = state.user.Friends;
+      const index = state.user.Friends.indexOf(action.payload);
       if (index > -1) {
         array.splice(index, 1);
       }

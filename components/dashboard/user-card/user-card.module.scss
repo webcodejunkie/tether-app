@@ -1,20 +1,22 @@
 .userCardContainer {
   display: flex;
-  flex-direction: column;
-  width: 340px;
+  flex-direction: row;
+  width: 320px;
   justify-content: center;
   align-items: center;
   text-align: center;
-  margin: 5px;
-  border-radius: 13px;
-  background-color: #26262d;
+  margin: 20px;
+  padding: 10px;
+  border-radius: 4px;
+  background: linear-gradient(45deg, #431f5b, #333d5f);
   color: white;
   filter: drop-shadow(2px 4px 6px black);
-  transition: .5s ease-in-out;
+  transition-duration: 1s;
+  border: 1px solid #161135;
 
   &:hover {
-    transition: .5s ease-in-out;
-    transform: scale(1.05);
+    transition-duration: 1s;
+    background: linear-gradient(45deg, #333d5f, #431f5b);
     z-index: 3;
   }
 }

@@ -6,7 +6,6 @@ import SimpleImageSlider from 'react-simple-image-slider';
 import Platform from '../platform/platform';
 
 import Rating from '@mui/material/Rating';
-import LaunchIcon from '@mui/icons-material/Launch';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import GameFeatures from '../game-card-features/gameFeatures';
 import Ratings from '../game-card-features/ratings';
@@ -18,10 +17,12 @@ export default function Game(props) {
   const [game, setGame] = useState([]);
   const [screenshots, setScreenshots] = useState([]);
 
+  // Map Screenshots to SimpleImageSlider
   let images = screenshots.map((img) => {
     return { url: img.image }
   })
 
+  // Show Modal
   const onShow = async () => {
     document.body.style.position = 'fixed';
     document.body.style.top = `-${window.scrollY}px`;
@@ -43,6 +44,7 @@ export default function Game(props) {
       })
   }
 
+  // Get Screenshots from RAWG API
   const getScreenshots = async (gamePk) => {
     await axios.get(`https://api.rawg.io/api/games/${gamePk}/screenshots` + process.env.RAWG_API_KEY, {
     })
@@ -56,6 +58,7 @@ export default function Game(props) {
       })
   }
 
+  // Close Modal
   const onClose = () => {
     document.body.style.position = '';
     document.body.style.top = '';
@@ -67,12 +70,14 @@ export default function Game(props) {
     window.scrollTo(0, parseInt(scrollY || '0') * -1);
   }
 
+  // Close Modal Button
   const ModalButton = () => {
     return (
       <button className={styles.closeModalBtn} onClick={onClose}>Close</button>
     )
   }
 
+  // Modal
   const Modal = () => {
     return (
       <div className={styles.gameModalContainer}>
@@ -88,8 +93,8 @@ export default function Game(props) {
               <div>
                 <SimpleImageSlider
                   images={images}
-                  width={800}
-                  height={480}
+                  width={600}
+                  height={400}
                   showBullets={true}
                   showNavs={true}
                 />
@@ -171,10 +176,7 @@ export default function Game(props) {
         </div>
       </div>
       {
-        modal ?
-          <Modal />
-          :
-          <div style={{ display: 'none' }} ></div>
+        modal && <Modal />
       }
     </>
   )
