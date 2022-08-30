@@ -1,3 +1,7 @@
+.multiformContainer {
+  display: flex;
+}
+
 .gamerTypeContainer {
   display: flex;
   flex-direction: column;
@@ -5,26 +9,67 @@
 
   &>div {
     padding: 1rem;
+    margin: 5px;
+
+    &>label {
+      padding: 1rem;
+      border-radius: 40px;
+      background-color: #efeeee;
+
+      &:hover {
+        opacity: .8;
+      }
+    }
+
+    &>input[type="radio"] {
+      opacity: 0;
+    }
+
+    &>input[type="radio"]:checked+label {
+      padding: 1rem;
+      border-radius: 40px;
+      background: hsla(150, 75%, 50%, 1);
+      color: hsla(215, 0%, 100%, 1);
+      box-shadow: 0px 0px 20px hsla(150, 100%, 50%, 0.75);
+
+      &::after {
+        width: 20px;
+        height: 20px;
+        border-radius: 50px;
+        color: hsla(150, 100%, 50%, 0.75)
+      }
+    }
   }
 }
 
+.playerTypeLabel {
+  font-family: "Montserrat", sans-serif;
+  height: 100%;
+  display: block;
+  background: white;
+  border-radius: 20px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  text-align: center;
+  box-shadow: 0px 3px 10px -2px hsl(150deg 5% 65%)
+}
+
 .formWrapper {
-  width: 60%;
+  margin: 2rem 0;
 }
 
 .registerForm {
   display: flex;
   flex-direction: column;
-  align-items: center;
   padding: 3rem;
   margin: 20px 0;
   border-radius: 5px;
-  background: linear-gradient(45deg, #000000, #8e27b9);
+  background: white;
   filter: drop-shadow(2px 4px 6px black);
-  color: white;
+  color: #383535;
 
-  &>div {
-    padding: 2rem 0;
+  &>input {
+    background-color: #edebeb;
   }
 }
 
@@ -33,38 +78,6 @@
   justify-content: center;
   width: 100%;
   align-items: center;
-}
-
-.fButtonContainer {
-  width: 50%;
-  display: flex;
-  justify-content: flex-end;
-}
-
-.buttonContainer {
-  display: flex;
-  justify-content: space-evenly;
-  width: 100%;
-}
-
-.submitButton {
-  padding: 15px 65px;
-  border: 1px solid transparent;
-  background-color: #00c96c;
-  border-radius: 25px;
-  color: white;
-  transition-duration: 0.8s;
-  cursor: pointer;
-
-  &:hover {
-    background-color: #00b762;
-    opacity: .8;
-    transition-duration: .8s;
-  }
-
-  &:active {
-    transform: scale(.9);
-  }
 }
 
 .registerButton {
@@ -124,33 +137,18 @@
   }
 }
 
-.profilePictureContainter {
+.profilePictureContainer {
   display: flex;
-  flex-direction: column;
+  justify-content: center;
   align-items: center;
-
-  &>input {
-    color: #FFF;
-  }
+  flex-direction: column;
 }
 
 /* Extra small devices (phones, 600px and down) */
-@media only screen and (max-width: 600px) {
-  .formWrapper {
-    width: 100%;
-  }
-}
+@media only screen and (max-width: 600px) {}
 
 /* Small devices (portrait tablets and large phones, 600px and up) */
-@media only screen and (min-width: 600px) {
-  .formWrapper {
-    width: 80%;
-  }
-}
+@media only screen and (min-width: 600px) {}
 
 /* Medium devices (landscape tablets, 768px and up) */
-@media only screen and (min-width: 768px) {
-  .formWrapper {
-    width: 50%;
-  }
-}
+@media only screen and (min-width: 768px) {}

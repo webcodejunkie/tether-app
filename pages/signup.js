@@ -1,21 +1,24 @@
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import axios from "axios";
-
+// SCSS Styles
 import styles from './scss/signup.module.scss';
+// Componenets
 import Layout from '../components/layout';
+import AlertBar from '../components/alert/alert';
 import RegisterFirstForm from '../components/signup/registerFirst';
 import RegisterSecondForm from '../components/signup/registerSecond';
-
+// MUI Component
+import { Avatar, Container, Button } from '@mui/material';
+// Country / Region Dropper
+import { CountryDropdown, RegionDropdown } from 'react-country-region-selector';
+// React Multi-Form
+import { MultiStepForm, Step } from 'react-multi-form';
 
 export default function Register(props) {
 
-  useEffect(() => {
-    errorChecker();
-  })
-
   const router = useRouter();
-
+  // Register
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [email, setEmail] = useState('');
@@ -25,11 +28,18 @@ export default function Register(props) {
   const [region, setRegion] = useState('');
   const [bio, setBio] = useState('');
   const [profilePicture, setProfilePicture] = useState(null);
+  // Form Validation
   const [error, setError] = useState('');
-  const [stepOne, setStepOne] = useState(true);
+  const [active, setActive] = useState(1);
+
+  useEffect(() => {
+    errorChecker();
+  }, [username, password, email, birthday, playerType, country, region, bio])
+
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
     axios.post('https://tetherapi.herokuapp.com/tether/register', {
       Username: username,
       Password: password,
@@ -48,6 +58,7 @@ export default function Register(props) {
       .catch((err) => {
         console.error("Error: " + err);
       });
+
   }
 
   const handleNext = (e) => {
@@ -55,16 +66,22 @@ export default function Register(props) {
     if ((username && password && email && birthday) === '' || null) {
       setError('Please make sure all fields are filled out.');
     } else {
-      setStepOne(false);
+      setActive(active + 1);
     }
   }
 
   const onImageChange = (e) => {
     const [file] = e.target.files;
-    setProfilePicture(URL.createObjectURL(file));
+    if ([file] === undefined) {
+      setError('Please choose a photo.')
+    } else {
+      console.log(file);
+      setProfilePicture(URL.createObjectURL(file));
+    }
   }
 
   const errorChecker = () => {
+    console.log(error);
 
     let keys = [
       '?',
@@ -102,20 +119,29 @@ export default function Register(props) {
       setError("Password can't contain alphanumeric characters.");
     } else if (password.length <= 6) {
       setError('Password needs to be longer.')
+    } else if (email === '' || null) {
+      setError('Please enter a valid email.')
     } else if ((country === '' || null) && (region === '' || null)) {
       setError('Please select a country and region.')
-    } else if (birthday === Date.now()) {
-      setError('You are just a baby');
+    } else if (profilePicture === '' || null) {
+      setError('Please choose a profile picture (file size must not exceed 10mb)');
     } else {
       setError('')
     }
 
+
   }
 
   return (
-    <div className={styles.registerWrapper}>
-      {
-        stepOne ? (
+    <Container
+      sx={{ padding: '3rem' }}
+    >
+      {error !== '' &&
+        <AlertBar error={error} errorType={'warning'} severity={'Unable to process'} className={styles.errorAlert} />
+      }
+
+      <MultiStepForm activeStep={active} className={styles.multiformContainer}>
+        <Step label='one'>
           <RegisterFirstForm
             username={username}
             setUsername={setUsername}
@@ -132,8 +158,8 @@ export default function Register(props) {
             setRegion={setRegion}
             error={error}
           />
-        )
-          :
+        </Step>
+        <Step label='two'>
           <RegisterSecondForm
             handleSubmit={handleSubmit}
             playerType={playerType}
@@ -142,8 +168,38 @@ export default function Register(props) {
             onImageChange={onImageChange}
             profilePicture={profilePicture}
           />
+        </Step>
+      </MultiStepForm>
+      {
+        active !== 1 && (
+          <Button
+            variant="contained"
+            onClick={() => setActive(active - 1)}>Previous</Button>
+        )
       }
-    </div>
+      {
+        active !== 1 && (
+          <Button
+            color="success"
+            variant="contained"
+            style={{ float: 'right' }}
+            onClick={handleSubmit}
+          >
+            Submit
+          </Button>
+        )
+      }
+      {
+        active !== 2 && (
+          <Button
+            variant="contained"
+            onClick={handleNext}
+            style={{ float: 'right' }}>
+            Next
+          </Button>
+        )
+      }
+    </Container>
   );
 }
 

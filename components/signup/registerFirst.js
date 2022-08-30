@@ -1,16 +1,11 @@
 import styles from '../../pages/scss/signup.module.scss';
-import AlertBar from '../alert/alert';
-import { CountryRegionData, CountryDropdown, RegionDropdown } from 'react-country-region-selector';
+import { CountryDropdown, RegionDropdown } from 'react-country-region-selector';
 
 export default function RegisterFirstForm(props) {
 
   return (
     <div className={styles.formWrapper}>
-      <form className={styles.registerForm} method="POST" action="">
-
-        {props.error !== '' &&
-          <AlertBar error={props.error} errorType={'info'} severity={'Info'} className={styles.errorAlert} />
-        }
+      <form className={styles.registerForm} method="POST">
 
         <h1>Sign Up</h1>
 
@@ -21,7 +16,6 @@ export default function RegisterFirstForm(props) {
         <input
           type="text"
           name="username"
-          placeholder="tether2022"
           pattern="[A-Z-a-z0-9]{5,12}"
           max="12"
           min="5"
@@ -34,7 +28,6 @@ export default function RegisterFirstForm(props) {
           Password
         </label>
         <input
-          placeholder="password"
           pattern="[A-Z-a-z0-9-!]+"
           type="password"
           value={props.password}
@@ -46,7 +39,6 @@ export default function RegisterFirstForm(props) {
           Email
         </label>
         <input
-          placeholder="someemail@gmail.com"
           type="email"
           value={props.email}
           onChange={e => props.setEmail(e.target.value)}
@@ -76,13 +68,6 @@ export default function RegisterFirstForm(props) {
           onChange={e => props.setBirthday(e.target.value)}
           required
         />
-
-        <div className={styles.fbuttonContainer}>
-          <button
-            onClick={props.handleNext}
-            className={styles.registerButton}
-          >Next</button>
-        </div>
       </form>
     </div>
   );

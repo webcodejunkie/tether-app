@@ -120,6 +120,7 @@ export default function DashBoard() {
     return (
       <Stack sx={{ padding: '40px' }}>
         <Stack
+          justifyContent="space-between"
           direction={{ md: 'column', lg: 'row' }}
           spacing={2}
         >
