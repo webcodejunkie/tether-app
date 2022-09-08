@@ -2,6 +2,7 @@ import Button from '@mui/material/Button';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import { createTheme, ThemeProvider } from '@mui/material';
+import MenuIcon from '@mui/icons-material/Menu';
 import Link from 'next/link';
 import * as React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
@@ -48,7 +49,7 @@ export default function DashBtn() {
           aria-expanded={open ? 'true' : undefined}
           onClick={handleClick}
         >
-          Dashboard
+          <MenuIcon />
         </Button>
       </ThemeProvider>
       <Menu
@@ -64,12 +65,19 @@ export default function DashBtn() {
         transformOrigin={{
           vertical: 'top',
           horizontal: 'right',
-        }}
-      >
+        }}>
+        <Link href="/home">
+          <MenuItem onClick={handleClose}>Home</MenuItem>
+        </Link>
+        <Link href="/community">
+          <MenuItem onClick={handleClose}>Communities</MenuItem>
+        </Link>
         <Link href="/dashboard">
           <MenuItem onClick={handleClose}>Dashboard</MenuItem>
         </Link>
-        <MenuItem onClick={handleClose}>Profile</MenuItem>
+        <Link href="/profile">
+          <MenuItem onClick={handleClose}>Profile</MenuItem>
+        </Link>
         <MenuItem onClick={handleClose}>My account</MenuItem>
         <Link href="/">
           <MenuItem onClick={() => { handleClose(); onLogOut(); }}>Logout</MenuItem>

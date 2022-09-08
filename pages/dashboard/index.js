@@ -1,16 +1,13 @@
 import styles from '../scss/dashboard.module.scss';
-
 import { Grid, Stack } from '@mui/material';
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import { FadeLoader } from 'react-spinners';
 import { css } from '@emotion/react';
-
 // Redux
 import { useSelector, useDispatch } from "react-redux";
 import { unSetUser } from '../../features/users/userSlice';
 import axios from 'axios';
-
 // Components
 import UserCard from '../../components/dashboard/user-card/user-card';
 import Game from '../../components/home/game-card/game';

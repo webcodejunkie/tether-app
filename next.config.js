@@ -6,4 +6,13 @@ module.exports = {
   env: {
     RAWG_API_KEY: process.env.RAWG_API_KEY,
   },
+  async redirect() {
+    return [
+      {
+        source: '/',
+        destination: '/welcome',
+        permant: true,
+      },
+    ]
+  }
 }

@@ -1,4 +1,3 @@
-import { useEffect } from 'react';
 import Welcome from '../components/welcome/welcome';
 import Layout from '../components/layout';
 

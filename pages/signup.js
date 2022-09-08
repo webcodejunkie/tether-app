@@ -9,9 +9,7 @@ import AlertBar from '../components/alert/alert';
 import RegisterFirstForm from '../components/signup/registerFirst';
 import RegisterSecondForm from '../components/signup/registerSecond';
 // MUI Component
-import { Avatar, Container, Button } from '@mui/material';
-// Country / Region Dropper
-import { CountryDropdown, RegionDropdown } from 'react-country-region-selector';
+import { Container, Button } from '@mui/material';
 // React Multi-Form
 import { MultiStepForm, Step } from 'react-multi-form';
 
@@ -137,7 +135,7 @@ export default function Register(props) {
       sx={{ padding: '3rem' }}
     >
       {error !== '' &&
-        <AlertBar error={error} errorType={'warning'} severity={'Unable to process'} className={styles.errorAlert} />
+        <AlertBar error={error} errorType={'warning'} severity={'Required Fields'} className={styles.errorAlert} />
       }
 
       <MultiStepForm activeStep={active} className={styles.multiformContainer}>
