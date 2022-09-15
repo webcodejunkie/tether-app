@@ -1,0 +1,30 @@
+$onDarkBG: #FFF;
+$textAlignCenter: center;
+
+.badges {
+  background-color: #37d137;
+  padding: 9px;
+  border-radius: 5px;
+  outline: none;
+}
+
+.introContainer {
+  background-color: #221f1f;
+  border-radius: 4px;
+  filter: drop-shadow(2px 4px 6px black);
+  padding: 1rem;
+  margin: 1rem;
+}
+
+.postContainer {
+  background-color: #221f1f;
+  border-radius: 4px;
+  filter: drop-shadow(2px 4px 6px black);
+  padding: 1rem;
+  margin: 1rem;
+}
+
+.favoritesHeader {
+  color: $onDarkBG;
+  text-align: $textAlignCenter;
+}

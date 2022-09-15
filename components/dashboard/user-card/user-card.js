@@ -9,8 +9,6 @@ export default function UserCard(props) {
 
   const { user } = useSelector((state) => state.user);
 
-  console.log(props);
-
   return (
     <div className={styles.userCardContainer}>
       <Avatar alt="user-image" sx={{ width: 100, height: 100 }} src={props.users.ProfilePicture} />

@@ -14,9 +14,8 @@ export default function UserFeatures(props) {
 
   const onFriend = () => {
     const token = localStorage.getItem('token');
-    const users = localStorage.getItem('username');
 
-    axios.post(`https://tetherapi.herokuapp.com/tether/${user}/user/` + props.users.Username, {}, {
+    axios.post(`https://tetherapi.herokuapp.com/tether/${user.Username}/user/` + props.users.Username, {}, {
       headers: { Authorization: `Bearer ${token}` }
     })
       .then((res) => {
@@ -31,9 +30,8 @@ export default function UserFeatures(props) {
 
   const onUnFriend = () => {
     const token = localStorage.getItem('token');
-    const user = localStorage.getItem('username');
 
-    axios.delete(`https://tetherapi.herokuapp.com/tether/${user}/user/` + props.users.Username, {
+    axios.delete(`https://tetherapi.herokuapp.com/tether/${user.Username}/user/` + props.users.Username, {
       headers: { Authorization: `Bearer ${token}` }
     })
       .then((res) => {

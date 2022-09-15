@@ -1,28 +1,26 @@
 .userCardContainer {
   display: flex;
   flex-direction: row;
-  width: 320px;
-  justify-content: center;
+  height: 85px;
   align-items: center;
   text-align: center;
   margin: 20px;
-  padding: 10px;
-  border-radius: 4px;
-  background: linear-gradient(45deg, #431f5b, #333d5f);
   color: white;
-  filter: drop-shadow(2px 4px 6px black);
-  transition-duration: 1s;
-  border: 1px solid #161135;
 
   &:hover {
-    transition-duration: 1s;
-    background: linear-gradient(45deg, #333d5f, #431f5b);
     z-index: 3;
   }
 }
 
 .username {
+  transition-duration: .5s;
   padding: 10px;
+
+  &:hover {
+    transition-duration: .5s;
+    color: rgb(202, 56, 255);
+    cursor: pointer;
+  }
 }
 
 .about {
