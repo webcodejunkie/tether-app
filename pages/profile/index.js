@@ -21,10 +21,12 @@ export default function Profile() {
 				container
 				flexDirection={{ xs: 'column', md: 'column', lg: 'row' }}
 				justifyContent="space-between"
+				sx={{ padding: '0 10px' }}
 			>
 				{/* Number of Friends */}
 				<Stack
 					flexDirection="row"
+					justifyContent="center"
 					alignItems="flex-end"
 					color="lightgreen"
 				>
@@ -64,10 +66,13 @@ export default function Profile() {
 					</Stack>
 				</Stack>
 			</Stack>
+
+			{/*Into & Posts Wrapper*/}
 			<Grid
 				container
 				flexDirection={{ xs: 'column', md: 'column', lg: 'row' }}
 			>
+				{/*Into Container*/}
 				<Grid
 					item
 				>
@@ -75,8 +80,8 @@ export default function Profile() {
 						container
 						flexDirection="column"
 						className={styles.introContainer}
-						noWrap
 					>
+						{/*Into*/}
 						<Typography variant="body1">INTRO</Typography>
 						<Typography variant="body1">{user.Bio}</Typography>
 						<hr />
@@ -90,11 +95,14 @@ export default function Profile() {
 					</Stack>
 				</Grid>
 
+				{/*Posts Container*/}
 				<Grid
 					item
+					columns={{ xs: 3, md: 3, lg: 12 }}
+					xs={12}
 				>
 					{/* Posts Component */}
-					<Stack className={styles.postContainer}>
+					<Stack className={styles.postContainer} noWrap>
 						<Typography variant="body1">POSTS</Typography>
 					</Stack>
 				</Grid>

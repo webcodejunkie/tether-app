@@ -5,13 +5,13 @@ import { Provider } from 'react-redux';
 
 function App({ Component, pageProps }) {
 
-  const getLayout = Component.getLayout || ((page) => page)
+	const getLayout = Component.getLayout || ((page) => page)
 
-  return getLayout(
-    <Provider store={store}>
-      <Component {...pageProps} />
-    </Provider>
-  )
+	return getLayout(
+		<Provider store={store}>
+			<Component {...pageProps} />
+		</Provider>
+	)
 }
 
 export default wrapper.withRedux(App);

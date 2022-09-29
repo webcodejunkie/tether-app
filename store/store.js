@@ -2,7 +2,7 @@ import { configureStore, applyMiddleware } from "@reduxjs/toolkit";
 import { composeWithDevTools } from "redux-devtools-extension";
 import { createWrapper } from "next-redux-wrapper";
 import thunk from "redux-thunk";
-import userReducer from "../features/users/userSlice";
+import userReducer from "./reducers/userSlice";
 
 const initialState = {
 
@@ -11,12 +11,12 @@ const initialState = {
 const middleware = [thunk];
 
 export const store = configureStore({
-  reducer: {
-    user: userReducer
-  }
+	reducer: {
+		user: userReducer
+	}
 },
-  initialState,
-  composeWithDevTools(applyMiddleware(...middleware))
+	initialState,
+	composeWithDevTools(applyMiddleware(...middleware))
 );
 
 const makeStore = () => store;
