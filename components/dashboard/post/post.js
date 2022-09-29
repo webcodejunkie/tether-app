@@ -1,4 +1,5 @@
 import styles from './post.module.scss';
+import * as React from 'react';
 import {
   Stack,
   Button,
@@ -11,19 +12,36 @@ import {
   useMediaQuery
 }
   from "@mui/material";
+import MuiAlert from '@mui/material/Alert';
+import Snackbar from '@mui/material/Snackbar';
 import { useTheme } from '@mui/material/styles';
 import { Close } from "@mui/icons-material";
 import { useState } from "react";
 import { useSelector } from "react-redux";
 import axios from 'axios';
 
+const Alert = React.forwardRef(function Alert(props, ref) {
+  return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
+});
+
 export default function PostComponent(props) {
   const { user } = useSelector((state) => state.user);
   const [open, setIsOpened] = useState(false);
   const [message, setMessage] = useState('');
+  const [error, setError] = useState('');
+  const [severity, setSeverity] = useState('');
+  const [openAlert, setOpenAlert] = useState(false);
 
   const theme = useTheme();
   const fullScreen = useMediaQuery(theme.breakpoints.down('md'));
+
+  const handleAlertClose = (event, reason) => {
+    if (reason === 'clickaway') {
+      return;
+    }
+
+    setOpenAlert(false);
+  };
 
   const handleClickOpen = () => {
     setIsOpened(true);
@@ -34,19 +52,30 @@ export default function PostComponent(props) {
   }
 
   const handlePost = () => {
-    const from = user._id;
+    const userID = user._id;
+    const avatar = user.ProfilePicture;
+    const username = user.Username;
     const token = localStorage.getItem('token');
-    axios.post(`https://tetherapi.herokuapp.com/tether/post/${user._id}/`, {
-      from: from,
+    axios.post(`https://tetherapi.herokuapp.com/posts/post/${user._id}/`, {
+      UserID: userID,
+      Avatar: avatar,
+      Username: username,
       content: message
     }, {
       headers: { Authorization: `Bearer ${token}` }
     })
       .then((res) => {
+        setIsOpened(false)
+        setOpenAlert(true);
+        setSeverity('success');
+        setError(`Your post has been published!`)
         const data = res.data;
         console.log(data);
       })
       .catch((err) => {
+        setOpenAlert(true);
+        setSeverity('danger');
+        setError('Sorry, something went wrong.. Try again.');
         console.error('Error ' + err);
       })
   }
@@ -91,6 +120,11 @@ export default function PostComponent(props) {
           <Button onClick={handlePost}>Post</Button>
         </DialogActions>
       </Dialog>
+      <Snackbar open={openAlert} autoHideDuration={6000} onClose={handleAlertClose}>
+        <Alert onClose={handleAlertClose} severity={severity} sx={{ width: '100%' }}>
+          {error}
+        </Alert>
+      </Snackbar>
     </Stack>
   )
 }

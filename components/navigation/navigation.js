@@ -21,7 +21,7 @@ export default function Navigation() {
       <div className={styles.brandWrapper}>
         <ThemeProvider theme={theme}>
           <Link href="/">
-            <Button color="link">
+            <Button color="link" size='large'>
               Tether
             </Button>
           </Link>

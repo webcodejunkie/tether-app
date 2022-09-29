@@ -1,0 +1,172 @@
+.headerCLR {
+	font-weight: 900 !important;
+}
+
+.tetherHomeImage {
+	width: 60%;
+}
+
+.sectionOne {
+	background: linear-gradient(316deg, rgba(5, 13, 255, 0.6784313725), #521594);
+	height: 100vh;
+	width: 100%;
+	align-items: center;
+	display: flex;
+	justify-content: flex-start;
+	color: white;
+}
+
+.sectionOneContent {
+	position: absolute;
+	right: 0;
+	padding: 10px;
+	border-bottom: 12px solid #c000ff;
+	margin-bottom: 125px;
+	background: black;
+	color: white;
+	filter: drop-shadow(2px 4px 6px black);
+}
+
+.fpTwo {
+	width: 50%;
+}
+
+.sectionTwo {
+	background: #ecedff;
+	color: #000;
+	width: 100%;
+	height: 100vh;
+	align-items: center;
+	display: flex;
+	justify-content: center;
+	flex-direction: column-reverse;
+}
+
+.sectionThree {
+	background: linear-gradient(90deg, rgba(5, 13, 255, 0.6784313725), #521594);
+	color: #FFF;
+	width: 100%;
+	height: 100vh;
+	align-items: center;
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+	z-index: 1;
+}
+
+.sectionFour {
+	background: #ecedff;
+	color: #000;
+	width: 100%;
+	height: 100vh;
+	align-items: center;
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+	z-index: 1;
+}
+
+.sectionFourContent {
+	padding: 10px;
+	border-bottom: 12px solid #c000ff;
+	background: black;
+	color: white;
+	filter: drop-shadow(2px 4px 6px black);
+}
+
+.sectionFive {
+	padding: 6rem 0;
+	background: #ecedff;
+	color: #000;
+	width: 100%;
+	align-items: center;
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+	z-index: 1;
+}
+
+.sectionFiveContent {
+	padding: 10px;
+	color: white;
+	height: 80%;
+}
+
+.videoSection {
+	background: #ecedff;
+	color: #000;
+	width: 100%;
+	align-items: center;
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+	z-index: 1;
+	padding: 2rem 0;
+}
+
+.intruList {
+	list-style: circle;
+}
+
+.playnowImage {
+	border-radius: 10px;
+	filter: drop-shadow(2px 4px 6px black);
+	cursor: pointer;
+	transition-duration: .3s;
+
+	&:hover {
+		transform: rotate(360deg);
+		transition-duration: .3s;
+	}
+}
+
+.playNowArrowBtn {
+	font-size: 46px;
+}
+
+.playNowVideoPlayer {
+	width: 50%;
+}
+
+.groundedImage {
+	position: absolute;
+	right: 0;
+	bottom: -219vh;
+	width: 20%;
+	z-index: -1;
+}
+
+.apexImage {
+	position: absolute;
+	width: 100%;
+	z-index: -1;
+}
+
+.playerTypeIcon {
+	width: 150px;
+}
+
+@media screen and (max-width: 600px) {
+	.playNowVideoPlayer {
+		width: 100%;
+	}
+
+	.groundedImage {
+		width: 50%;
+	}
+
+	.tetherHomeImage {
+		display: none;
+	}
+
+	.sectionOneContent {
+		position: absolute;
+		right: 0;
+		padding: 10px;
+		border-bottom: none;
+		margin-bottom: 125px;
+		background: transparent;
+		color: white;
+		filter: drop-shadow(2px 4px 6px black);
+	}
+}

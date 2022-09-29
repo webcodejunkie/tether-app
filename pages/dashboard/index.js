@@ -96,8 +96,21 @@ export default function DashBoard() {
     return (
       <Grid
         container
+        flexDirection="row"
         sx={{ padding: '40px' }}
       >
+        <Grid
+          container
+          justifyContent="center"
+        >
+          <PostComponent />
+        </Grid>
+        <Grid
+          container
+          alignItems="center"
+        >
+          <FeedComponent />
+        </Grid>
         <Grid
           container
           justifyContent="flex-end"
@@ -119,8 +132,6 @@ export default function DashBoard() {
             }
           </Stack>
         </Grid>
-        <PostComponent />
-        <FeedComponent />
       </Grid>
     )
   }

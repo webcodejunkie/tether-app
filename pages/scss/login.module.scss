@@ -1,61 +1,68 @@
 .loginForm {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 50%;
-  padding: 5rem 0;
-  filter: drop-shadow(2px 4px 6px black);
-  color: #fff;
-  border-radius: 5px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	width: 50%;
+	padding: 5rem 0;
+	filter: drop-shadow(2px 4px 40px black);
+	color: #ffffff;
+	border-radius: 5px;
+	background-image: linear-gradient(0deg, #4b1884, #8500ff);
 }
 
 .loginWrapper {
-  display: flex;
-  justify-content: center;
-  width: 100%;
-  align-items: center;
-  height: 100vh;
+	display: flex;
+	justify-content: center;
+	width: 100%;
+	align-items: center;
+	height: 100vh;
 }
 
 .submitButton {
-  padding: 15px 65px;
-  border: 1px solid transparent;
-  background-color: #00c96c;
-  border-radius: 25px;
-  color: white;
-  transition-duration: 0.8s;
-  cursor: pointer;
+	padding: 15px 65px;
+	border: 1px solid transparent;
+	background-color: #00c96c;
+	border-radius: 25px;
+	color: white;
+	transition-duration: 0.8s;
+	cursor: pointer;
 
-  &:hover {
-    background-color: #00b762;
-    opacity: .8;
-    transition-duration: .8s;
-  }
+	&:hover {
+		background-color: #00b762;
+		opacity: .8;
+		transition-duration: .8s;
+	}
 
-  &:active {
-    transform: scale(.9);
-  }
+	&:active {
+		transform: scale(.9);
+	}
 }
 
 .errorAlert {
-  color: #FFF;
-  border: 1px solid transparent;
-  background-color: red;
-  padding: 10px 15px;
-  border-radius: 20px;
-  transition-duration: 1s;
-  font-size: 16px;
-  position: absolute;
-  top: 0;
-  margin-top: 20px;
+	color: #FFF;
+	border: 1px solid transparent;
+	background-color: red;
+	padding: 10px 15px;
+	border-radius: 20px;
+	transition-duration: 1s;
+	font-size: 16px;
+	position: absolute;
+	top: 0;
+	margin-top: 20px;
 
-  &:empty {
-    transition-duration: .8s;
-    padding: 0;
-    border: none;
-  }
+	&:empty {
+		transition-duration: .8s;
+		padding: 0;
+		border: none;
+	}
 }
 
 .labelText {
-  font-size: 24px;
+	font-size: 24px;
+}
+
+@media screen and (max-width: 600px) {
+	.loginForm {
+		width: 90%;
+	}
 }
