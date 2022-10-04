@@ -1,9 +1,8 @@
 .loginForm {
 	display: flex;
 	flex-direction: column;
-	align-items: center;
-	width: 50%;
-	padding: 5rem 0;
+	width: 400px;
+	padding: 4rem 2rem;
 	filter: drop-shadow(2px 4px 40px black);
 	color: #000;
 	border-radius: 5px;
@@ -16,6 +15,7 @@
 	width: 100%;
 	align-items: center;
 	height: 100vh;
+	background: linear-gradient(180deg, #8101f7, #564bff);
 }
 
 .submitButton {
@@ -58,7 +58,12 @@
 }
 
 .labelText {
-	font-size: 24px;
+	font-size: 18px;
+}
+
+.labelHeaderText {
+	font-weight: 600;
+	font-size: 22px;
 }
 
 @media screen and (max-width: 600px) {

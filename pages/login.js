@@ -10,6 +10,7 @@ import { setUser } from '../store/reducers/userSlice';
 import { FadeLoader } from 'react-spinners';
 import Snackbar from '@mui/material/Snackbar';
 import MuiAlert from '@mui/material/Alert';
+import { Stack, Divider } from '@mui/material';
 
 const Alert = React.forwardRef(function Alert(props, ref) {
 	return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
@@ -72,12 +73,20 @@ export default function Login() {
 				</Alert>
 			</Snackbar>
 			<form className={styles.loginForm}>
-				<h1>Login</h1>
-				<label className={styles.labelText}>Username</label>
-				<input value={username} type="text" onChange={e => setUsername(e.target.value)} />
-				<label className={styles.labelText}>Password</label>
-				<input value={password} type="text" onChange={e => setPassword(e.target.value)} />
-				<input className={styles.submitButton} type="submit" onClick={handleSubmit} />
+				<h1 className={styles.labelHeaderText}>Login</h1>
+				<Stack
+					flexDirection="column"
+				>
+					<label className={styles.labelText}>Username</label>
+					<input value={username} type="text" onChange={e => setUsername(e.target.value)} />
+				</Stack>
+				<Stack
+					flexDirection="column"
+				>
+					<label className={styles.labelText}>Password</label>
+					<input value={password} type="text" onChange={e => setPassword(e.target.value)} />
+				</Stack>
+				<input className={styles.submitButton} type="submit" value="LOGIN" onClick={handleSubmit} />
 				{
 					loading && <FadeLoader color="#FFF" loading={loaded} size={150} />
 				}
