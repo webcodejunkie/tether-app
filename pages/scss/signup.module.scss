@@ -1,147 +1,155 @@
 .multiformContainer {
-  display: flex;
+	display: flex;
+}
+
+.signupWrapper {
+	background: linear-gradient(180deg, #8101f7, #564bff);
 }
 
 .gamerTypeContainer {
-  display: flex;
-  flex-direction: column;
-  text-align: center;
+	display: flex;
+	flex-direction: column;
+	text-align: center;
 
-  &>div {
-    padding: 1rem;
-    margin: 5px;
+	&>div {
+		padding: 1rem;
+		margin: 5px;
 
-    &>label {
-      padding: 1rem;
-      border-radius: 40px;
-      background-color: #efeeee;
+		&>label {
+			padding: 1rem;
+			border-radius: 40px;
+			background-color: #efeeee;
 
-      &:hover {
-        opacity: .8;
-      }
-    }
+			&:hover {
+				opacity: .8;
+			}
+		}
 
-    &>input[type="radio"] {
-      opacity: 0;
-    }
+		&>input[type="radio"] {
+			opacity: 0;
+		}
 
-    &>input[type="radio"]:checked+label {
-      padding: 1rem;
-      border-radius: 40px;
-      background: hsla(150, 75%, 50%, 1);
-      color: hsla(215, 0%, 100%, 1);
-      box-shadow: 0px 0px 20px hsla(150, 100%, 50%, 0.75);
+		&>input[type="radio"]:checked+label {
+			padding: 1rem;
+			border-radius: 40px;
+			background: hsla(150, 75%, 50%, 1);
+			color: hsla(215, 0%, 100%, 1);
+			box-shadow: 0px 0px 20px hsla(150, 100%, 50%, 0.75);
 
-      &::after {
-        width: 20px;
-        height: 20px;
-        border-radius: 50px;
-        color: hsla(150, 100%, 50%, 0.75)
-      }
-    }
-  }
+			&::after {
+				width: 20px;
+				height: 20px;
+				border-radius: 50px;
+				color: hsla(150, 100%, 50%, 0.75)
+			}
+		}
+	}
 }
 
 .playerTypeLabel {
-  font-family: "Montserrat", sans-serif;
-  height: 100%;
-  display: block;
-  background: white;
-  border-radius: 20px;
-  padding: 1rem;
-  margin-bottom: 1rem;
-  text-align: center;
-  box-shadow: 0px 3px 10px -2px hsl(150deg 5% 65%)
+	font-family: "Montserrat", sans-serif;
+	height: 100%;
+	display: block;
+	background: white;
+	border-radius: 20px;
+	padding: 1rem;
+	margin-bottom: 1rem;
+	text-align: center;
+	box-shadow: 0px 3px 10px -2px hsl(150deg 5% 65%)
 }
 
 .formWrapper {
-  margin: 2rem 0;
+	margin: 2rem 0;
+	display: flex;
+	justify-content: center;
 }
 
 .registerForm {
-  display: flex;
-  flex-direction: column;
-  padding: 3rem;
-  margin: 20px 0;
-  border-radius: 5px;
-  background: white;
-  filter: drop-shadow(2px 4px 6px black);
-  color: #383535;
+	display: flex;
+	flex-direction: column;
+	padding: 3rem;
+	margin: 20px 0;
+	border-radius: 5px;
+	background: white;
+	filter: drop-shadow(2px 4px 6px black);
+	color: #383535;
+	width: 400px;
+	padding: 4rem 2rem;
 
-  &>input {
-    background-color: #edebeb;
-  }
+	&>input {
+		background-color: #edebeb;
+	}
 }
 
 .registerWrapper {
-  display: flex;
-  justify-content: center;
-  width: 100%;
-  align-items: center;
+	display: flex;
+	justify-content: center;
+	width: 100%;
+	align-items: center;
 }
 
 .registerButton {
-  padding: 15px 65px;
-  border: 1px solid transparent;
-  background-color: #65c6ff;
-  border-radius: 25px;
-  color: white;
-  transition-duration: 0.8s;
-  cursor: pointer;
+	padding: 15px 65px;
+	border: 1px solid transparent;
+	background-color: #65c6ff;
+	border-radius: 25px;
+	color: white;
+	transition-duration: 0.8s;
+	cursor: pointer;
 
-  &:hover {
-    background-color: #5eb8ed;
-    opacity: .8;
-    transition-duration: .8s;
-  }
+	&:hover {
+		background-color: #5eb8ed;
+		opacity: .8;
+		transition-duration: .8s;
+	}
 
-  &:active {
-    transform: scale(.9);
-  }
+	&:active {
+		transform: scale(.9);
+	}
 }
 
 
 
 .errorAlert {
-  background-color: red;
-  padding: 10px 15px;
-  border-radius: 20px;
-  transition-duration: 1s;
-  font-size: 16px;
-  position: absolute;
-  top: 0;
+	background-color: red;
+	padding: 10px 15px;
+	border-radius: 20px;
+	transition-duration: 1s;
+	font-size: 16px;
+	position: absolute;
+	top: 0;
 
-  &:empty {
-    transition-duration: .8s;
-    padding: 0;
-  }
+	&:empty {
+		transition-duration: .8s;
+		padding: 0;
+	}
 }
 
 .bioTextArea {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 1rem 0;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	padding: 1rem 0;
 }
 
 .countrySelContainer {
-  padding: 20px 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+	padding: 20px 0;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
 
-  &>select {
-    padding: 5px;
-    margin: 5px;
-    border-radius: 15px;
-  }
+	&>select {
+		padding: 5px;
+		margin: 5px;
+		border-radius: 15px;
+	}
 }
 
 .profilePictureContainer {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
 }
 
 /* Extra small devices (phones, 600px and down) */

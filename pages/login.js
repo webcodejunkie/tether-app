@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
+import Link from 'next/link';
 import axios from "axios";
 import styles from './scss/login.module.scss';
 import Layout from '../components/layout';
@@ -10,7 +11,7 @@ import { setUser } from '../store/reducers/userSlice';
 import { FadeLoader } from 'react-spinners';
 import Snackbar from '@mui/material/Snackbar';
 import MuiAlert from '@mui/material/Alert';
-import { Stack, Divider } from '@mui/material';
+import { Stack, Divider, Typography } from '@mui/material';
 
 const Alert = React.forwardRef(function Alert(props, ref) {
 	return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
@@ -88,8 +89,22 @@ export default function Login() {
 				</Stack>
 				<input className={styles.submitButton} type="submit" value="LOGIN" onClick={handleSubmit} />
 				{
-					loading && <FadeLoader color="#FFF" loading={loaded} size={150} />
+					loading && (
+						<Stack
+							alignItems="center"
+						>
+							<FadeLoader color="#000" loading={loaded} size={150} />
+						</Stack>
+					)
 				}
+
+				<Divider sx={{ marginTop: '10px' }} />
+
+				<Stack
+					alignItems="center"
+				>
+					<Typography variant="subtitle1">If you don't have an account, <Link href="/signup">Sign Up</Link>!</Typography>
+				</Stack>
 			</form>
 		</div>
 	);
