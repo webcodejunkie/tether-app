@@ -98,7 +98,7 @@ export default function Login() {
 					)
 				}
 
-				<Divider sx={{ marginTop: '10px' }} />
+				<Divider sx={{ marginTop: 1, marginBottom: 1 }} />
 
 				<Stack
 					alignItems="center"

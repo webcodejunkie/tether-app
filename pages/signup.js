@@ -9,7 +9,7 @@ import AlertBar from '../components/alert/alert';
 import RegisterFirstForm from '../components/signup/registerFirst';
 import RegisterSecondForm from '../components/signup/registerSecond';
 // MUI Component
-import { Container, Button } from '@mui/material';
+import { Grid, Button, Stack } from '@mui/material';
 // React Multi-Form
 import { MultiStepForm, Step } from 'react-multi-form';
 
@@ -131,7 +131,10 @@ export default function Register(props) {
 	}
 
 	return (
-		<Container
+		<Grid
+			container
+			flexDirection="column"
+			alignItems="center"
 			sx={{ padding: '3rem' }}
 			className={styles.signupWrapper}
 		>
@@ -169,36 +172,43 @@ export default function Register(props) {
 					/>
 				</Step>
 			</MultiStepForm>
-			{
-				active !== 1 && (
-					<Button
-						variant="contained"
-						onClick={() => setActive(active - 1)}>Previous</Button>
-				)
-			}
-			{
-				active !== 1 && (
-					<Button
-						color="success"
-						variant="contained"
-						style={{ float: 'right' }}
-						onClick={handleSubmit}
-					>
-						Submit
-					</Button>
-				)
-			}
-			{
-				active !== 2 && (
-					<Button
-						variant="contained"
-						onClick={handleNext}
-						style={{ float: 'right' }}>
-						Next
-					</Button>
-				)
-			}
-		</Container>
+			<Stack
+				flexDirection="row"
+				justifyContent="space-evenly"
+				sx={{ width: '100%' }}
+			>
+				{
+					active !== 1 && (
+						<Button
+							variant="contained"
+							onClick={() => setActive(active - 1)}>Previous</Button>
+					)
+				}
+				{
+					active !== 1 && (
+						<Button
+							color="success"
+							variant="contained"
+							style={{ float: 'right' }}
+							onClick={handleSubmit}
+						>
+							Submit
+						</Button>
+					)
+				}
+				{
+					active !== 2 && (
+						<Button
+							variant="contained"
+							color="success"
+							onClick={handleNext}
+							style={{ float: 'right' }}>
+							Next
+						</Button>
+					)
+				}
+			</Stack>
+		</Grid>
 	);
 }
 

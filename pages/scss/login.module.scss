@@ -1,3 +1,12 @@
+.labelText {
+	font-size: 18px;
+}
+
+.labelHeaderText {
+	font-weight: 600;
+	font-size: 22px;
+}
+
 .loginForm {
 	display: flex;
 	flex-direction: column;
@@ -55,15 +64,6 @@
 		padding: 0;
 		border: none;
 	}
-}
-
-.labelText {
-	font-size: 18px;
-}
-
-.labelHeaderText {
-	font-weight: 600;
-	font-size: 22px;
 }
 
 @media screen and (max-width: 600px) {

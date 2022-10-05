@@ -8,6 +8,8 @@ import { setFriend, unSetFriend } from '../../../store/reducers/userSlice';
 import classNames from 'classnames';
 import axios from 'axios';
 
+// Todo: update this function @webcodejunkie
+
 export default function UserFeatures(props) {
 	const { user } = useSelector((state) => state.user);
 	const dispatch = useDispatch();
