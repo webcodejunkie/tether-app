@@ -27,8 +27,9 @@ $textAlignCenter: center;
 .favoritesHeader {
 	color: $onDarkBG;
 	text-align: $textAlignCenter;
+	padding: 10px;
 }
 
 .profileContainer {
-	background-image: linear-gradient(180deg, #6e00ff, #c000ff);
+	background-color: #221f1f;
 }

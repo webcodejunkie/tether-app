@@ -3,17 +3,42 @@ import Layout from "../../components/layout";
 import { Avatar, Grid, Stack } from "@mui/material";
 import PersonIcon from '@mui/icons-material/Person';
 import Typography from '@mui/material/Typography';
+import axios from 'axios';
 import { useSelector } from "react-redux";
+import { useState, useEffect } from 'react';
 import FavoritedGameComponent from '../../components/profile/favoritedGames';
+import FeedCard from '../../components/dashboard/feed/card/feed-card';
 
 export default function Profile() {
+
+	useEffect(() => {
+		getMyPosts();
+	}, []);
+
 	const { user } = useSelector((state) => state.user);
+
+	const [myPosts, setMyPosts] = useState([]);
+
+	const getMyPosts = () => {
+		const token = localStorage.getItem('token');
+		axios.get(`https://tetherapi.herokuapp.com/posts/${user._id}/posts`, {
+			headers: { Authorization: `Bearer ${token}` }
+		})
+			.then((res) => {
+				const data = res.data;
+				setMyPosts(data);
+			})
+			.catch((err) => {
+				console.error("Error: " + err);
+			});
+	}
 
 	return (
 		<Grid
 			container
 			flexDirection="column"
 			justifyContent="center"
+			alignItems="center"
 			sx={{ padding: '3rem 0', color: "#FFF" }}
 			className={styles.profileContainer}
 		>
@@ -21,7 +46,7 @@ export default function Profile() {
 				container
 				flexDirection={{ xs: 'column', md: 'column', lg: 'row' }}
 				justifyContent="space-between"
-				sx={{ padding: '0 10px' }}
+				sx={{ padding: '0 10px', width: '100%' }}
 			>
 				{/* Number of Friends */}
 				<Stack
@@ -71,10 +96,12 @@ export default function Profile() {
 			<Grid
 				container
 				flexDirection={{ xs: 'column', md: 'column', lg: 'row' }}
+				flexWrap="nowrap"
 			>
 				{/*Into Container*/}
 				<Grid
 					item
+					flexBasis="100%"
 				>
 					<Stack
 						container
@@ -97,14 +124,24 @@ export default function Profile() {
 
 				{/*Posts Container*/}
 				<Grid
-					item
+					container
+					flexDirection="column"
 					columns={{ xs: 3, md: 3, lg: 12 }}
 					xs={12}
+					alignItems={{ xs: "center", md: "center", lg: "flex-start" }}
+					flexBasis="100%"
 				>
 					{/* Posts Component */}
-					<Stack className={styles.postContainer} noWrap>
+					<Stack className={styles.postContainer}>
 						<Typography variant="body1">POSTS</Typography>
 					</Stack>
+					{
+						myPosts.map((posts, index) => {
+							return (
+								<FeedCard posts={posts} key={index} />
+							)
+						})
+					}
 				</Grid>
 			</Grid>
 			<FavoritedGameComponent />
