@@ -1,131 +1,131 @@
 .gameWrapper {
-  width: 440px;
-  text-align: center;
-  background-color: #302b2b;
-  color: #FFF;
-  margin: 10px;
-  transition-duration: 1s;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+	width: 440px;
+	text-align: center;
+	background-image: linear-gradient(180deg, #8401fd, #4d1788);
+	color: #FFF;
+	margin: 10px;
+	transition-duration: 1s;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
 
-  &:hover {
-    transition: all .5s ease-in-out;
-  }
+	&:hover {
+		transition: all .5s ease-in-out;
+	}
 }
 
 .gameTitle {
-  padding: 18px;
-  background-color: #1e1818;
-  width: 100%;
+	padding: 18px;
+	width: 100%;
 }
 
 .gameCover {
-  width: 100%;
+	width: 100%;
 }
 
 .platIcons {
-  width: 50px;
-  height: auto;
+	width: 50px;
+	height: auto;
 }
 
 .gameModalTitle {
-  font-size: 55px;
+	padding: 0 1rem;
+	font-size: 55px;
 }
 
 .gameModalContainer {
-  overflow-y: scroll;
-  background: #121212fc;
-  color: white;
-  position: fixed;
-  width: 100%;
-  left: 0;
-  top: 0;
-  height: 100vh;
-  z-index: 999;
-  padding: 0 6rem;
+	overflow-y: scroll;
+	background: #121212fc;
+	color: white;
+	position: fixed;
+	width: 100%;
+	left: 0;
+	top: 0;
+	height: 100vh;
+	z-index: 999;
 }
 
 .gameModalWrapper {}
 
 .modalImage {
-  width: 50%;
-  height: auto;
+	width: 100%;
+	height: auto;
 }
 
 .gameModalImageWrapper {
-  display: flex;
-  justify-content: center;
+	display: flex;
+	justify-content: center;
 }
 
 .modalHeaders {
-  font-size: 45px;
+	font-size: 45px;
 }
 
 .modalLinks {
-  color: #FFF;
-  text-decoration: underline;
+	color: #FFF;
+	text-decoration: underline;
 
-  &:hover {
-    color: #a5a5a5;
-  }
+	&:hover {
+		color: #a5a5a5;
+	}
 }
 
 .modalGenreList {
-  display: flex;
-  align-items: center;
+	display: flex;
+	align-items: center;
 }
 
 .genreLinks {
-  padding: 2px;
+	padding: 2px;
 }
 
 .modalDevelopersList {
-  display: flex;
-  align-items: center;
+	display: flex;
+	align-items: center;
 }
 
 .smallModalColWrapper {
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-evenly;
+	padding: 30px 0;
+	display: flex;
+	align-items: flex-start;
+	justify-content: space-evenly;
 
 }
 
 .closeModalBtn {
-  position: absolute;
-  right: 2%;
-  top: 3%;
-  border: 0px solid transparent;
-  background-color: red;
-  padding: 10px 25px;
-  border-radius: 25px;
-  color: #fff;
-  transition-duration: .8s;
-  cursor: pointer;
+	position: absolute;
+	right: 2%;
+	top: 3%;
+	border: 0px solid transparent;
+	background-color: red;
+	padding: 10px 25px;
+	border-radius: 25px;
+	color: #fff;
+	transition-duration: .8s;
+	cursor: pointer;
 
-  &:hover {
-    background-color: #db0000;
-    transition-duration: .8s;
-  }
+	&:hover {
+		background-color: #db0000;
+		transition-duration: .8s;
+	}
 }
 
 .launchModal {
-  position: absolute;
+	position: absolute;
 
-  &:hover {
-    color: red;
-  }
+	&:hover {
+		color: red;
+	}
 }
 
 .dropIcon {
-  font-size: 14px;
-  color: #8a7c7c;
-  cursor: pointer;
-  transition-duration: .8s;
+	font-size: 14px;
+	color: #fff;
+	cursor: pointer;
+	transition-duration: .8s;
 
-  &:hover {
-    color: #FFF;
-    transition-duration: .8s;
-  }
+	&:hover {
+		color: #aaadb7;
+		transition-duration: .8s;
+	}
 }
