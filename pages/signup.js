@@ -25,7 +25,8 @@ export default function Register(props) {
 	const [country, setCountry] = useState('');
 	const [region, setRegion] = useState('');
 	const [bio, setBio] = useState('');
-	const [profilePicture, setProfilePicture] = useState(null);
+	// const [profilePicture, setProfilePicture] = useState(null);
+	// const [file, setFile] = useState([]);
 	// Form Validation
 	const [error, setError] = useState('');
 	const [active, setActive] = useState(1);
@@ -43,12 +44,24 @@ export default function Register(props) {
 			Password: password,
 			Email: email,
 			Birthday: birthday,
-			PlayerType: playerType,
 			Bio: bio,
+			PlayerType: playerType,
 			Country: country,
 			Region: region,
 		})
 			.then((res) => {
+				/* Post profile picture to AWS Bucket
+					axios.post(`https://tetherapi.herokuapp.com/tether/media/${username}/upload`, {
+					Image: file.target.files
+				})
+					.then((res) => {
+						const data = res.data;
+						console.log(data);
+					})
+					.catch((err) => {
+						console.error("Error: " + err);
+					});
+				*/
 				const data = res.data;
 				console.log(data);
 				router.push('/login');
@@ -68,6 +81,7 @@ export default function Register(props) {
 		}
 	}
 
+	/*
 	const onImageChange = (e) => {
 		const [file] = e.target.files;
 		if ([file] === undefined) {
@@ -75,8 +89,10 @@ export default function Register(props) {
 		} else {
 			console.log(file);
 			setProfilePicture(URL.createObjectURL(file));
+			console.log(profilePicture)
 		}
 	}
+	*/
 
 	const errorChecker = () => {
 		console.log(error);
@@ -108,7 +124,7 @@ export default function Register(props) {
 		];
 
 		if (username.length <= 4) {
-			setError('Username must be between, 4 to 12 characters.');
+			setError('Username must be between, 5 to 14 characters.');
 		} else if (username.length >= 13) {
 			setError('Username is too long, max character is 12.');
 		} else if (keys.some(el => username.includes(el))) {
@@ -121,8 +137,6 @@ export default function Register(props) {
 			setError('Please enter a valid email.')
 		} else if ((country === '' || null) && (region === '' || null)) {
 			setError('Please select a country and region.')
-		} else if (profilePicture === '' || null) {
-			setError('Please choose a profile picture (file size must not exceed 10mb)');
 		} else {
 			setError('')
 		}
@@ -167,8 +181,10 @@ export default function Register(props) {
 						playerType={playerType}
 						setPlayerType={setPlayerType}
 						setBio={setBio}
-						onImageChange={onImageChange}
-						profilePicture={profilePicture}
+					// onImageChange={onImageChange}
+					// profilePicture={profilePicture}
+					// file={file}
+					// setFile={setFile}
 					/>
 				</Step>
 			</MultiStepForm>

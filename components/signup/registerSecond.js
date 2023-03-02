@@ -6,11 +6,16 @@ export default function RegisterSecondForm(props) {
 	return (
 		<form className={styles.registerForm} method="POST" encType="multipart/form-data">
 
+			{/*
 			<div className={styles.profilePictureContainer}>
 				<h2>Select your Profile Picture</h2>
 				<Avatar src={props.profilePicture} alt="user-profile" sx={{ width: 300, height: 300 }} />
-				<input type="file" onChange={(img) => props.onImageChange(img)} />
-			</div>
+				<input type="file" onChange={(img) => {
+					props.onImageChange(img)
+					props.setFile(img)
+				}} />
+			</div> 
+			*/}
 
 			<div className={styles.bioTextArea}>
 				<h2>Tell us a little bit about yourself!</h2>
@@ -34,7 +39,10 @@ export default function RegisterSecondForm(props) {
 						value="I am a casual gamer!"
 						name="select"
 						id="control_1"
-						onChange={e => props.setPlayerType(e.target.value)}
+						onChange={(e) => {
+							console.log(e.target.value)
+							props.setPlayerType(e.target.value)
+						}}
 					/>
 					<label className="playerTypeLabel" htmlFor="control_1">I am a casual gamer!</label>
 				</div>

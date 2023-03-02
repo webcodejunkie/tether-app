@@ -19,7 +19,7 @@ export default function RegisterFirstForm(props) {
 					type="text"
 					name="username"
 					pattern="[A-Z-a-z0-9]{5,12}"
-					max="12"
+					max="14"
 					min="5"
 					value={props.username}
 					onChange={e => props.setUsername(e.target.value)}
@@ -51,7 +51,10 @@ export default function RegisterFirstForm(props) {
 					<label>Country</label>
 					<CountryDropdown
 						value={props.country}
-						onChange={(val) => props.setCountry(val)}
+						onChange={function (val) {
+							console.log(val)
+							props.setCountry(val)
+						}}
 					/>
 
 					<RegionDropdown
