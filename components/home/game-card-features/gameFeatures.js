@@ -1,15 +1,12 @@
-import PersonSearchIcon from '@mui/icons-material/PersonSearch';
-import { Button } from '@mui/material';
 import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
-import FavoriteIcon from '@mui/icons-material/Favorite';
-import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import styles from './features.module.scss';
 import classNames from 'classnames';
 import { useSelector, useDispatch } from "react-redux";
 import { setFavorites, unFavorite } from '../../../store/reducers/userSlice';
 
 import axios from 'axios';
+import PlayNow from '../playnow/playnow';
 
 export default function GameFeatures(props) {
 	const { user } = useSelector((state) => state.user);
@@ -57,7 +54,7 @@ export default function GameFeatures(props) {
 
 	return (
 		<div className={styles.featuresContainer}>
-			<Button>Play now</Button>
+			<PlayNow id={props.id} game={props.game} />
 
 			{
 				// Check to see if redux changes occured and update UI

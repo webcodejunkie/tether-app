@@ -7,6 +7,8 @@ import Link from 'next/link';
 import * as React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { unSetUser } from '../../../store/reducers/userSlice';
+// Socket.io
+import socketIO from 'socket.io-client';
 
 export default function DashBtn() {
 

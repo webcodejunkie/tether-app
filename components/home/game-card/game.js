@@ -179,7 +179,7 @@ export default function Game(props) {
 				{
 					props.game.platforms && <Platform platform={props.game.platforms} />
 				}
-				<GameFeatures id={props.game.id} />
+				<GameFeatures id={props.game.id} game={props.game} />
 				<div className={styles.dropIcon} onClick={onShow}>
 					<p>Show more</p>
 					<ArrowDropDownIcon />

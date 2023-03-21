@@ -1,0 +1,18 @@
+.playNowModal {
+	color: white;
+	position: fixed;
+	left: 0%;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	background-color: #0e0e0e;
+	z-index: 100;
+	overflow: hidden;
+}
+
+.imageContainer {
+	position: absolute;
+	filter: brightness(0.2);
+	width: -webkit-fill-available;
+	z-index: -1;
+}

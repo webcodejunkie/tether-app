@@ -1,76 +1,77 @@
 @mixin button {
-  padding: 14px 30px;
-  outline: none;
-  border: 0px solid transparent;
-  cursor: pointer;
-  color: #000;
-  transition-duration: .5s;
-  background: #ffffff;
-  border-radius: 22px;
+	padding: 14px 30px;
+	outline: none;
+	border: 0px solid transparent;
+	cursor: pointer;
+	color: #000;
+	transition-duration: .5s;
+	background: #ffffff;
+	border-radius: 22px;
+	z-index: -1;
 
-  &:hover {
-    transition-duration: .5s;
-    background: #00ff80;
-    color: white;
-  }
+	&:hover {
+		transition-duration: .5s;
+		background: #00ff80;
+		color: white;
+	}
 
-  &:active {}
+	&:active {}
 }
 
 .gameViewComponentContainer {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	width: 100%;
 }
 
 .gameCollectionWrapper {
-  background-color: #1a191c;
+	background-color: #1a191c;
 }
 
 .gameListWrapper {
-  display: flex;
-  flex-direction: row;
+	display: flex;
+	flex-direction: row;
 }
 
 .gameListContainer {
-  width: 100%;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: center;
+	width: 100%;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: center;
 }
 
 .nextButton {
-  @include button;
+	@include button;
 }
 
 .previousButton {
-  @include button;
+	@include button;
 }
 
 .buttonNPWrapper {
-  width: 100%;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
-  padding: 12px 0;
-  z-index: 3;
+	width: 100%;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-evenly;
+	padding: 12px 0;
+	z-index: 3;
 }
 
 .buttonNPWrapperAfter {
-  position: static;
+	position: static;
 }
 
 .headerTitle {
-  color: #fff;
-  font-size: 55px;
-  text-shadow: 0px 0px 25px black;
-  width: 100%;
+	color: #fff;
+	font-size: 55px;
+	text-shadow: 0px 0px 25px black;
+	width: 100%;
 }
 
 .headerWrapper {
-  padding: 40px;
-  width: 100%;
-  color: white;
+	padding: 40px;
+	width: 100%;
+	color: white;
 }

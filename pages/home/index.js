@@ -53,7 +53,6 @@ export default function HomeMenu() {
 			dispatch(unSetUser());
 			router.push('/login');
 		}
-		console.log(user);
 	}
 
 	// Loading state to display games

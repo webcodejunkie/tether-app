@@ -65,7 +65,7 @@ export default function FavoritedGameComponent() {
 							:
 							userFavs.map((game, index) => {
 								return (
-									<Game index={index} game={game} />
+									<Game key={index} game={game} />
 								)
 							})
 					}
