@@ -12,8 +12,6 @@ import { FadeLoader } from 'react-spinners';
 import Snackbar from '@mui/material/Snackbar';
 import MuiAlert from '@mui/material/Alert';
 import { Stack, Divider, Typography } from '@mui/material';
-// Socket.io
-import socketIO from 'socket.io-client';
 
 const Alert = React.forwardRef(function Alert(props, ref) {
 	return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
@@ -49,9 +47,6 @@ export default function Login() {
 				dispatch(setUser(userData));
 				localStorage.setItem('username', data.user.Username);
 				localStorage.setItem('token', data.token);
-				const socket = socketIO.connect('https://tetherapi.herokuapp.com/');
-				socket.id = data.user._id
-				console.log(socket.id);
 				router.push('/home');
 			})
 			.catch((err) => {

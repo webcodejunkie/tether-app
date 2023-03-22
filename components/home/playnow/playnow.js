@@ -6,9 +6,24 @@ import { FadeLoader } from "react-spinners";
 import { useSelector } from "react-redux";
 // Material UI
 import GroupIcon from '@mui/icons-material/Group';
+import { io } from 'socket.io-client';
 
 export default function PlayNow(props) {
 	const { user } = useSelector((state) => state.user);
+
+	useEffect(() => {
+		const socket = io.connect('https://tetherapi.herokuapp.com/');
+		let socketId = user._id;
+		/*
+		socket.emit("connected_user", socketId, () => {
+			console.log(socketId);
+		});
+		*/
+		console.log(socket);
+		socket.id = user._id;
+		console.log(socket.id);
+	}, []);
+
 
 	const [open, isModalOpen] = useState(false);
 	const [loading, isLoading] = useState(true);
